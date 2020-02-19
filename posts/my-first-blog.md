@@ -1,6 +1,9 @@
 ---
 title: "My First Blog"
-date: "2020-01-07"
+description: "My first blog preview description"
+slug: "my-first-blog"
+createdAt: "2020-01-07"
+categories: ["Motivation", "Life"]
 ---
 
 This is my first blog post!

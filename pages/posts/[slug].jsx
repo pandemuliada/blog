@@ -5,15 +5,15 @@ import ReactMarkdown from 'react-markdown'
 const PostDetail = (props) => {
   const { 
     content, 
-    data: frontmatter
+    data
   } = props
   
   return (<div>
     <Head>
-      <title>{frontmatter.title}</title>
+      <title>{data.title}</title>
     </Head>
 
-    <h2>{frontmatter.title}</h2>
+    <h2>{data.title}</h2>
     <ReactMarkdown source={content}/>
   </div>)
 }
@@ -25,8 +25,6 @@ PostDetail.getInitialProps = async (context) => {
 
   const content = await import(`../../posts/${slug}.md`)
   const data = matter(content.default)
-
-  console.log(data.content)
 
   return {
     ...data // it returns { content: "string", data: { title, date, ... } }
