@@ -2,6 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import matter from "gray-matter";
 
+const styles = {
+  title: 'text-xl font-medium text-gray-700 mb-2',
+}
+
 const Posts = (props) => {
   const { posts } = props
 
@@ -9,18 +13,24 @@ const Posts = (props) => {
     <Head>
       <title>All Post</title>
     </Head>
+    <div className='w-11/12 mx-auto md:w-1/2 lg:1/3'>
+      <section className='text-center mt-5 mb-8'>
+        <h1 className='text-4xl text-gray-800'>All Post</h1>
+      </section>
 
-    <h1>All Post</h1>
+      <article>
+        {posts.map(({ data }) => (
+          <div className='bg-gray-100 py-5 px-8 mb-5 rounded' key={data.slug}>
+            <h3 className={styles.title}>{data.title}</h3>
+            <p className='text-gray-700 truncate mb-3'>{data.description}</p>
+            <Link href={`/posts/${data.slug}`} as={`/posts/${data.slug}`}>
+              <a className='text-blue-400'>Read More</a>
+            </Link>
+          </div>
+        ))}
+      </article>
+    </div>
 
-    {posts.map(({ data }) => (
-      <div key={data.slug}>
-        <h3>{data.title}</h3>
-        <p>{data.description}</p>
-        <Link href={`/posts/${data.slug}`} as={`/posts/${data.slug}`}>
-          <a>Detail</a>
-        </Link>
-      </div>
-    ))}
   </div>)
 }
 
