@@ -3,4 +3,8 @@
 @tailwind components;
 /* purgecss end ignore */
 
+p {
+  @apply text-gray-700 leading-7 font-normal mb-5;
+}
+
 @tailwind utilities;
