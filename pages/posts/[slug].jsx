@@ -1,6 +1,7 @@
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
+import { readingTime, formatDate } from '../../utils'
 
 const Paragraph = ({ children }) => <p>{children}</p>
 
@@ -24,15 +25,15 @@ const BlockCode = (props) => {
 const InlineCode = (props) => <code className='bg-gray-200 px-1 text-gray-700'>{props.children}</code>
 
 const styles = {
-  title: 'text-4xl md:text-5xl font-medium text-gray-800 my-5',
+  title: 'text-4xl md:text-5xl font-medium text-gray-800 mb-0',
 }
 
 const PostDetail = (props) => {
   const { 
-    content, 
+    content,
     data
   } = props
-  
+
   return (<>
     <Layout 
       title={data.title}
@@ -42,9 +43,12 @@ const PostDetail = (props) => {
       ogImage={data.heroImage}
       useContainer>
     
-      <section>
+      <section className='mt-10'>
         <h2 className={styles.title}>{data.title}</h2>
-        {data.heroImage && <img src={data.heroImage} alt={data.title}/>}
+        <div className='text-gray-600 italic mb-5'>
+          <span>{formatDate(data.createdAt)} - {readingTime(content) > 1 ? readingTime(content) + ' minutes' : readingTime(content) + ' minute' } read</span>
+        </div>
+        {data.heroImage && <img src={data.heroImage} alt={data.title} className='mb-5'/>}
       </section>
 
       <article>
