@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
+import Layout from '../../components/Layout'
 
 const Paragraph = ({ children }) => <p>{children}</p>
 
@@ -25,7 +25,6 @@ const InlineCode = (props) => <code className='bg-gray-200 px-1 text-gray-700'>{
 
 const styles = {
   title: 'text-4xl md:text-5xl font-medium text-gray-800 my-5',
-  container: 'w-10/12 mx-auto md:w-1/4'
 }
 
 const PostDetail = (props) => {
@@ -34,50 +33,47 @@ const PostDetail = (props) => {
     data
   } = props
   
-  return (<div>
-    <Head>
-      <title>{data.title}</title>
-      <meta name="description" content={data.description}/>
-      <meta property="og:url" content={`/posts/${data.slug}`}/>
-      <meta property="og:title" content={data.title}/>
-      <meta property="og:description" content={data.description}/>
-      <meta property="og:type" content="article"/>
-      {data.heroImage && <meta property="og:image" content={data.heroImage}/>}
-    </Head>
-
-    <div className={styles.container + ' mb-5'}>
-      <h2 className={styles.title}>{data.title}</h2>
-      {data.heroImage && <img src={data.heroImage} alt={data.title}/>}
-    </div>
-
-    <div className={styles.container}>
-
-      <ReactMarkdown 
-        source={content}
-        parserOptions={{ commonmark: true }}
-        renderers={{
-          paragraph: Paragraph,
-          heading: Heading,
-          code: BlockCode,
-          inlineCode: InlineCode
-        }}
-        />
-    </div>
-
-    {!!data.categories && <div className={styles.container + ' mt-12'}>
-      {data.categories.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm'>{category}</span>)}
-    </div>}
+  return (<>
+    <Layout 
+      title={data.title}
+      description={data.description}
+      url={`/posts/${data.slug}`}
+      type="article"
+      ogImage={data.heroImage}
+      useContainer>
     
+      <section>
+        <h2 className={styles.title}>{data.title}</h2>
+        {data.heroImage && <img src={data.heroImage} alt={data.title}/>}
+      </section>
 
-    {!!data.author && <div className={styles.container + ' mb-8'}>
-      <hr className='my-6'/>
-      <span className='text-gray-600'>Written by</span>
-      <h3 className='text-2xl font-bold mb-2 text-gray-700'>{data.author.name}</h3>
-      <p>{data.author.bio}</p>
-    </div>}
+      <article>
+        <ReactMarkdown 
+          source={content}
+          parserOptions={{ commonmark: true }}
+          renderers={{
+            paragraph: Paragraph,
+            heading: Heading,
+            code: BlockCode,
+            inlineCode: InlineCode
+          }}
+          />
+      </article>
 
+      {!!data.categories && <div className='mt-12'>
+        {data.categories.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm'>{category}</span>)}
+      </div>}
+      
 
-  </div>)
+      {!!data.author && <div className='mb-8'>
+        <hr className='my-6'/>
+        <span className='text-gray-600'>Written by</span>
+        <h3 className='text-2xl font-bold mb-2 text-gray-700'>{data.author.name}</h3>
+        <p>{data.author.bio}</p>
+      </div>}
+
+    </Layout>
+  </>)
 }
 
 export default PostDetail

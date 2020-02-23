@@ -1,6 +1,6 @@
 import React from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
+import Layout from '../components/Layout'
 
 const styles = {
   title: 'text-xl font-medium text-gray-700 mb-2',
@@ -8,13 +8,8 @@ const styles = {
 }
 
 const Home = () => {
-  return (<div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <div className='w-10/12 mx-auto md:w-1/4'>
+  return (<>
+    <Layout title="Home" useContainer>
       <section className='text-center mt-5 mb-8'>
         <h1 className='text-4xl text-gray-800'>Next Blog</h1>
         <p className='mt-1 mb-3'>Simple static markdown blog site, created with NextJS</p>
@@ -30,8 +25,8 @@ const Home = () => {
           <a className='bg-blue-100 text-blue-500 px-4 py-2 rounded'>See all post</a>
         </Link>
       </div>
-    </div>
-  </div>)
+    </Layout>
+  </>)
 }
 
 export default Home
