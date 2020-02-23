@@ -18,8 +18,8 @@ const Posts = (props) => {
 
       <section>
         {posts.map(({ data }) => (
-        <article>
-          <div className='bg-gray-100 py-5 px-8 mb-5 rounded' key={data.slug}>
+        <article key={data.slug}>
+          <div className='bg-gray-100 py-5 px-8 mb-5 rounded'>
             <h3 className={styles.title}>{data.title}</h3>
             <p className='truncate'>{data.description}</p>
             <Link href={`/posts/${data.slug}`} as={`/posts/${data.slug}`}>
