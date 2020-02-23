@@ -1,14 +1,10 @@
 ---
-title: "React Hooks : UseState"
+title: "React Hooks : useState"
 slug: "react-hooks-use-state"
-description: "Berkenalan dengan React Hook : Use State"
-createdAt: "2020-01-07"
-author: {
-  name: "Pande Muliada",
-  bio: "Front End Developer from beautiful island Bali • Also love Design especially UI/UX Design on dribbble.com/pandemuliada • github.com/pandemuliada"
-}
-heroImage: "/post_assets/react-hooks-use-state/react-hooks-hero.png"
-categories: ["React", "Front End"]
+description: "Berkenalan dengan React Hook : useState"
+createdAt: "2020-01-15"
+heroImage: "/static/posts/use-state.png"
+categories: ["react", "front end"]
 ---
 
 Halo semua, apa kabar kalian ? semoga sehat-sehat saja ya. sudah makan ? yang belum makan, makan dulu agar fokus mengikuti tulisan asal asalan saya ini hehe. Kali ini kita akan membicarakan fitur terbaru dari react yaitu **hooks**. Nah apa itu react hooks ?
