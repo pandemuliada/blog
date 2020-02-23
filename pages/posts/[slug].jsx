@@ -2,16 +2,14 @@ import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { readingTime, formatDate } from '../../utils'
+import author from '../../settings/author'
 
 const Paragraph = ({ children }) => <p>{children}</p>
 
 const Heading = (props) => {
-  if (props.level == 1) return <h1 className='mt-6 mb-4 font-medium text-gray-800 text-5xl'>{props.children}</h1> 
-  if (props.level == 2) return <h2 className='mt-6 mb-4 font-medium text-gray-800 text-4xl'>{props.children}</h2> 
-  if (props.level == 3) return <h3 className='mt-6 mb-4 font-medium text-gray-800 text-2xl'>{props.children}</h3>
-
-  const CustomHeading = ReactMarkdown.renderers.heading
-  return <CustomHeading {...props}/>
+  if (props.level == 1) return <h1 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-5xl'>{props.children}</h1> 
+  if (props.level == 2) return <h2 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-4xl'>{props.children}</h2> 
+  if (props.level == 3) return <h3 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-2xl'>{props.children}</h3>
 }
 
 const BlockCode = (props) => {
@@ -23,6 +21,8 @@ const BlockCode = (props) => {
 }
 
 const InlineCode = (props) => <code className='bg-gray-200 px-1 text-gray-700'>{props.children}</code>
+
+const Link = (props) => <a {...props} className='underline hover:text-blue-500'>{props.children}</a>
 
 const styles = {
   title: 'text-4xl md:text-5xl font-medium text-gray-800 mb-0',
@@ -43,7 +43,7 @@ const PostDetail = (props) => {
       ogImage={data.heroImage}
       useContainer>
     
-      <section className='mt-10'>
+      <section className='mt-5'>
         <h2 className={styles.title}>{data.title}</h2>
         <div className='text-gray-600 italic mb-5'>
           <span>{formatDate(data.createdAt)} - {readingTime(content) > 1 ? readingTime(content) + ' minutes' : readingTime(content) + ' minute' } read</span>
@@ -59,23 +59,23 @@ const PostDetail = (props) => {
             paragraph: Paragraph,
             heading: Heading,
             code: BlockCode,
-            inlineCode: InlineCode
+            inlineCode: InlineCode,
+            link: Link
           }}
           />
       </article>
 
       {!!data.categories && <div className='mt-12'>
-        {data.categories.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm'>{category}</span>)}
+        {data.categories.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm capitalize'>{category}</span>)}
       </div>}
       
 
-      {!!data.author && <div className='mb-8'>
+      <div className='mb-8'>
         <hr className='my-6'/>
         <span className='text-gray-600'>Written by</span>
-        <h3 className='text-2xl font-bold mb-2 text-gray-700'>{data.author.name}</h3>
-        <p>{data.author.bio}</p>
-      </div>}
-
+        <h3 className='text-2xl font-bold mb-2 text-gray-700'>{author.name}</h3>
+        <p>{author.bio}</p>
+      </div>
     </Layout>
   </>)
 }
