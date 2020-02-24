@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "deploy": "set NODE_ENV=production && yarn build && yarn export",
     "start": "next start"
   },
   "dependencies": {
     "gray-matter": "^4.0.2",
+    "jdown": "^1.0.3",
     "next": "9.2.1",
     "raw-loader": "^4.0.0",
     "react": "16.12.0",
