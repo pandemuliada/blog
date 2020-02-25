@@ -25,24 +25,8 @@ const months = [
 
 export function formatDate(stringDate) {
   const date = new Date(stringDate)
-    
-  let day, month
-  
-  // get day
-  for (let index = 0; index < days.length; index++) {
-    if (index == date.getDay()) {
-      day = days[index]
-      break
-    }
-  }
-  
-  // get month
-  for (let index = 0; index < months.length; index++) {
-    if (index == date.getMonth()) {
-      month = months[index]
-      break
-    }
-  }
+  const day = days[date.getDay()]
+  const month = months[date.getMonth()]
 
   const fullDate = `${day}, ${month} ${date.getDate()} ${date.getFullYear()}`
 
