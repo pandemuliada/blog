@@ -1,26 +1,15 @@
+import dynamic from 'next/dynamic'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { readingTime, formatDate } from '../../utils'
 import author from '../../settings/author'
 
-const Paragraph = ({ children }) => <p>{children}</p>
-
-const Heading = (props) => {
-  if (props.level == 1) return <h1 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-5xl'>{props.children}</h1> 
-  if (props.level == 2) return <h2 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-4xl'>{props.children}</h2> 
-  if (props.level == 3) return <h3 {...props} className='mt-6 mb-4 font-medium text-gray-800 text-2xl'>{props.children}</h3>
-}
-
-const BlockCode = (props) => {
-  return (<pre className='bg-gray-200 p-4 overflow-y-auto my-6 text-gray-700'>
-    <code>{props.value}</code>
-  </pre>)
-}
-
-const InlineCode = (props) => <code className='bg-gray-200 px-1 text-gray-700'>{props.children}</code>
-
-const Link = (props) => <a {...props} className='underline hover:text-blue-500'>{props.children}</a>
+const Heading = dynamic(() => import('../../components/Markdown/Heading'))
+const Paragraph = dynamic(() => import('../../components/Markdown/Paragraph'))
+const Link = dynamic(() => import('../../components/Markdown/Link'))
+const InlineCode = dynamic(() => import('../../components/Markdown/InlineCode'))
+const BlockCode = dynamic(() => import('../../components/Markdown/BlockCode'))
 
 const styles = {
   title: 'text-4xl md:text-5xl font-medium text-gray-800 mb-0',
