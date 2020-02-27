@@ -59,9 +59,19 @@ const PostDetail = (props) => {
       
       <div className='mb-8'>
         <hr className='my-6'/>
-        <span className='text-gray-600'>Written by</span>
+        <span className='text-gray-600'>Ditulis oleh</span>
         <h3 className='text-2xl font-bold mb-2 text-gray-700'>{author.name}</h3>
         <p>{author.bio}</p>
+        <div className='flex items-center'>
+          {author.accounts?.map((account) => (<div className='mr-3' style={{ width: 28, height: 28 }}>
+              <a href={account.url} className='cursor-pointer'>
+                <picture className='w-full'>
+                  <source srcSet={account.logo[0]} alt={account.name}/>
+                  <img src={account.logo[1]} alt={account.name} className='w-full rounded-full'/>
+                </picture>
+              </a>
+          </div>))}
+        </div>
       </div>
     </Layout>
   </>)

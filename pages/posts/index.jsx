@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic';
-import matter from "gray-matter";
+import dynamic from 'next/dynamic'
+import matter from "gray-matter"
 import { importAll } from '../../utils'
 import Layout from '../../components/Layout'
 
@@ -9,14 +9,15 @@ const Posts = (props) => {
   const { posts } = props
 
   return (<>
-    <Layout title="All Post" useContainer>
-      <section className='text-center mt-5 mb-8'>
-        <h1 className='text-4xl text-gray-800'>All Post</h1>
+    <Layout title="Semua Postingan" useContainer>
+      <section className='text-center mb-6'>
+        <h1 className='text-4xl font-medium text-gray-800'>Semua Postingan</h1>
       </section>
 
       <section>
         {posts.map(({ data }) => (<article key={data.slug}>
           <PostCard
+            previewImage={data.heroImage}
             title={data.title}
             description={data.description}
             href="/posts/[slug]" as={`/posts/${data.slug}`}/>
