@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic'
 import matter from 'gray-matter'
-import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 import { readingTime, formatDate } from '../../utils'
 import author from '../../settings/author'
 
+const ReactMarkdown = dynamic(() => import('react-markdown'))
 const Heading = dynamic(() => import('../../components/Markdown/Heading'))
 const Paragraph = dynamic(() => import('../../components/Markdown/Paragraph'))
 const Link = dynamic(() => import('../../components/Markdown/Link'))
@@ -21,6 +21,8 @@ const PostDetail = (props) => {
     data
   } = props
 
+  const readTime = readingTime(content)
+
   return (<>
     <Layout 
       title={data.title}
@@ -33,7 +35,7 @@ const PostDetail = (props) => {
       <section className='mt-5'>
         <h2 className={styles.title}>{data.title}</h2>
         <div className='text-gray-600 italic mb-5'>
-          <span>{formatDate(data.createdAt)} - {readingTime(content) > 1 ? readingTime(content) + ' minutes' : readingTime(content) + ' minute' } read</span>
+          <span>{formatDate(data.createdAt)} - {readTime > 1 ? readTime + ' minutes' : readTime + ' minute' } read</span>
         </div>
         {data.heroImage && <img src={data.heroImage} alt={data.title} className='mb-5'/>}
       </section>
@@ -48,15 +50,13 @@ const PostDetail = (props) => {
             code: BlockCode,
             inlineCode: InlineCode,
             link: Link
-          }}
-          />
+          }}/>
       </article>
 
-      {!!data.categories && <div className='mt-12'>
-        {data.categories.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm capitalize'>{category}</span>)}
-      </div>}
+      <div className='mt-12'>
+        {data.categories?.map((category, index) => <span key={index} className='bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm capitalize'>{category}</span>)}
+      </div>
       
-
       <div className='mb-8'>
         <hr className='my-6'/>
         <span className='text-gray-600'>Written by</span>
@@ -66,8 +66,6 @@ const PostDetail = (props) => {
     </Layout>
   </>)
 }
-
-export default PostDetail
 
 PostDetail.getInitialProps = async (context) => {
   const { slug } = context.query
@@ -79,3 +77,5 @@ PostDetail.getInitialProps = async (context) => {
     ...data // it returns { content: "string", data: { title, date, ... } }
   }
 }
+
+export default PostDetail

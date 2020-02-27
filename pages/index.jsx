@@ -21,7 +21,7 @@ const Home = () => {
       </section>
     
       <div className='text-center mt-3'>
-        <Link href="/posts">
+        <Link href="/posts" as="/posts">
           <a className='bg-blue-100 text-blue-500 px-4 py-2 rounded'>See all post</a>
         </Link>
       </div>

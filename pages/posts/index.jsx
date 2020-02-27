@@ -1,11 +1,9 @@
-import Link from 'next/link'
+import dynamic from 'next/dynamic';
 import matter from "gray-matter";
 import { importAll } from '../../utils'
 import Layout from '../../components/Layout'
 
-const styles = {
-  title: 'text-xl font-medium text-gray-700 mb-2',
-}
+const PostCard = dynamic(() => import('../../components/PostCard'))
 
 const Posts = (props) => {
   const { posts } = props
@@ -17,17 +15,12 @@ const Posts = (props) => {
       </section>
 
       <section>
-        {posts.map(({ data }) => (
-        <article key={data.slug}>
-          <div className='bg-gray-100 py-5 px-8 mb-5 rounded'>
-            <h3 className={styles.title}>{data.title}</h3>
-            <p className='truncate'>{data.description}</p>
-            <Link href={`/posts/${data.slug}`} as={`/posts/${data.slug}`}>
-              <a className='text-blue-400'>Read More</a>
-            </Link>
-          </div>
-        </article>
-        ))}
+        {posts.map(({ data }) => (<article key={data.slug}>
+          <PostCard
+            title={data.title}
+            description={data.description}
+            href="/posts/[slug]" as={`/posts/${data.slug}`}/>
+        </article>))}
       </section>
     </Layout>
   </>)
@@ -36,7 +29,7 @@ const Posts = (props) => {
 Posts.getInitialProps = async () => {
   const files = importAll(require.context('../../posts', true, /\.md$/))
 
-  const posts = files.reverse().map(file => matter(file.default))
+  const posts = files.map(file => matter(file.default))
 
   return {
     posts
