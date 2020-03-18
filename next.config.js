@@ -13,8 +13,8 @@ module.exports = withBundleAnalyzer({
     return config
   },
   env: {
-    SITE_TITLE: "Next Markdown Blog",
-    SITE_SHORT_DESCRIPTION: "A simple static blog created with nextjs & markdown",
+    SITE_NAME: "Pande Muliada",
+    SITE_SHORT_DESCRIPTION: "Pande Muliada personal blog about programming",
   },
   exportTrailingSlash: true,
   exportPathMap: async function () {

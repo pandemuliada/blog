@@ -9,7 +9,7 @@ const Posts = (props) => {
   const { posts } = props
 
   return (<>
-    <Layout title="Semua Postingan" useContainer>
+    <Layout title="Posts" useContainer>
       <section className='text-center mb-6'>
         <h1 className='text-4xl font-medium text-gray-800'>Semua Postingan</h1>
       </section>

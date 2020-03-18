@@ -35,7 +35,7 @@ const PostDetail = (props) => {
         <div className='text-gray-600 italic mb-5'>
           <span>{formatDate(data.createdAt)} - {readingTime(content)} menit</span>
         </div>
-        {data.heroImage && <img src={data.heroImage} alt={data.title} className='mb-5'/>}
+        {data.heroImage && <img src={data.heroImage} alt={data.title} className='w-full mb-5'/>}
       </section>
 
       <article>

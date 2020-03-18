@@ -13,7 +13,10 @@ const styles = {
 
 const Home = ({ posts }) => {
   return (<>
-    <Layout title="Beranda" useContainer>
+    <Layout 
+      title="Beranda"
+      ogTitle="Beranda"
+      useContainer>
       <section>
         <h1 className='text-4xl font-bold text-gray-800'>Halo semua ✋</h1>
         <p className='mt-4'>Selamat datang di blog pribadi saya. Saya <b>Pande Muliada</b>. Beginner Front End Developer dari Bali, Indonesia. Di blog ini saya akan membagikan hal-hal seputar programming dan mungkin curhatan serta pengalaman saya hehe ✌️</p>
