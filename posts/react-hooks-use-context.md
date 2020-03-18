@@ -3,7 +3,7 @@ title: "React Hooks : useContext"
 description: "Berkenalan dengan React Hook : useContext"
 slug: "react-hooks-use-context"
 createdAt: "2020-03-17"
-heroImage: "/static/posts/use-effect.png"
+heroImage: "/static/posts/use-context.png"
 categories: ["react", "front end"]
 ---
 
