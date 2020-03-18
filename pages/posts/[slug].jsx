@@ -21,8 +21,6 @@ const PostDetail = (props) => {
     data
   } = props
 
-  const readTime = readingTime(content)
-
   return (<>
     <Layout 
       title={data.title}
@@ -35,7 +33,7 @@ const PostDetail = (props) => {
       <section className='mt-5'>
         <h2 className={styles.title}>{data.title}</h2>
         <div className='text-gray-600 italic mb-5'>
-          <span>{formatDate(data.createdAt)} - {readTime > 1 ? readTime + ' minutes' : readTime + ' minute' } read</span>
+          <span>{formatDate(data.createdAt)} - {readingTime(content)} menit</span>
         </div>
         {data.heroImage && <img src={data.heroImage} alt={data.title} className='mb-5'/>}
       </section>

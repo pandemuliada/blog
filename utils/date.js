@@ -1,26 +1,26 @@
 const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  "Minggu",
+  "Senin",
+  "Selasa",
+  "Rabu",
+  "Kamis",
+  "Jumat",
+  "Sabtu",
 ]
 
 const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember",
 ]
 
 export function formatDate(stringDate) {
@@ -28,7 +28,7 @@ export function formatDate(stringDate) {
   const day = days[date.getDay()]
   const month = months[date.getMonth()]
 
-  const fullDate = `${day}, ${month} ${date.getDate()} ${date.getFullYear()}`
+  const fullDate = `${day}, ${date.getDate()} ${month} ${date.getFullYear()}`
 
   return fullDate
 }
