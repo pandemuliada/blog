@@ -14,7 +14,7 @@ module.exports = withBundleAnalyzer({
   },
   env: {
     SITE_NAME: "Pande Muliada",
-    SITE_SHORT_DESCRIPTION: "Pande Muliada personal blog about programming",
+    SITE_SHORT_DESCRIPTION: "Pande Muliada's personal blog about programming",
   },
   exportTrailingSlash: true,
   exportPathMap: async function () {

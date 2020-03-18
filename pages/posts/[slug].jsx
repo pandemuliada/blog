@@ -24,6 +24,7 @@ const PostDetail = (props) => {
   return (<>
     <Layout 
       title={data.title}
+      ogTitle={data.title}
       description={data.description}
       url={`/posts/${data.slug}`}
       type="article"

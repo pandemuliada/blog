@@ -13,9 +13,7 @@ const styles = {
 
 const Home = ({ posts }) => {
   return (<>
-    <Layout 
-      title="Beranda"
-      ogTitle="Beranda"
+    <Layout
       useContainer>
       <section>
         <h1 className='text-4xl font-bold text-gray-800'>Halo semua ✋</h1>
