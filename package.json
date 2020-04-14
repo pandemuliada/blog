@@ -13,7 +13,7 @@
   "dependencies": {
     "gray-matter": "^4.0.2",
     "jdown": "^1.0.3",
-    "next": "9.2.1",
+    "next": "9.3.2",
     "raw-loader": "^4.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
