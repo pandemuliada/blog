@@ -81,10 +81,10 @@ Oke sekarang akan saya jelaskan mulai dari file `server.js` . Jadi apa yang sebe
 - Line 1 : import package express
 - Line 2 : instansiasi express, biar bisa make fungsi-fungsinya express
 - Line 3 : import package `cors` . Gunanya apa? misal api kita ini ada di server yang berbeda dengan frontend kita bisa melakukan CORS (Cross-Origin Resource Sharing) atau bisa saling sharing data. Contoh frontend ada di `www.pandemuliada.com` sementara backend (rest api) ada di `www.apinyamul.com`
-- Line 5 : Mendefinisikan port berapa yang akan digunakan, disini saya set 3000
-- Line 7 : Menggunakan `cors` pada express
-- Line 9 - 11 : Buat route dengan path `/`,
-- Line 13 : Menjalankan server sesuai dengan port yang telah di definisikan diatas
+- Line 5 : mendefinisikan port berapa yang akan digunakan, disini saya set 3000
+- Line 7 : menggunakan `cors` pada express
+- Line 9 - 11 : buat route dengan path `/`,
+- Line 13 : menjalankan server sesuai dengan port yang telah di definisikan diatas
 
 Selanjutnya di `package.json` fokusnya sebenarnya cuma di bagian `scripts` dimana saya membuat script `start` sehingga memudahkan kita untuk start server. Jadinya untuk jalankan servernya, kita make `yarn start` atau `npm run start` daripada ngetik `nodemon server.js`.
 
