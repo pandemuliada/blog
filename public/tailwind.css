@@ -1,11 +1,20 @@
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 /* purgecss end ignore */
 
 ul,
 li {
   @apply mb-5;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
 }
 
 li {
@@ -16,4 +25,12 @@ p {
   @apply text-gray-700 leading-7 font-normal mb-5;
 }
 
-@tailwind utilities;
+@responsive {
+  .container {
+    width: 650px;
+    margin: auto;
+  }
+  .w-900 {
+    width: 900px;
+  }
+}

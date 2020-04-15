@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=production & next dev",
+    "dev": "next dev",
     "build": "cross-env NODE_ENV=production && next build",
     "export": "next export",
     "deploy": "yarn build && yarn export",

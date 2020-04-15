@@ -1,6 +1,6 @@
 ---
 title: 'Node REST API Series - Part 1'
-description: 'Series membuat REST API menggunakan NodeJS'
+description: 'Series membuat REST API menggunakan Node JS. Di part pertama ini kita akan melakukan inisialisasi projek'
 slug: 'node-rest-api-series-part-1'
 createdAt: '2020-04-14'
 heroImage: '/static/posts/node-rest-api-series/how-rest-work.png  '
@@ -88,4 +88,7 @@ Oke sekarang akan saya jelaskan mulai dari file `server.js` . Jadi apa yang sebe
 
 Selanjutnya di `package.json` fokusnya sebenarnya cuma di bagian `scripts` dimana saya membuat script `start` sehingga memudahkan kita untuk start server. Jadinya untuk jalankan servernya, kita make `yarn start` atau `npm run start` daripada ngetik `nodemon server.js`.
 
-So, what's next Mul? Di part 2 kita akan lanjut membuat membuat route, controller, model menggunakan [Sequelize](https://sequelize.org/).
+Di part 2 kita akan lanjut membuat membuat route, controller, model menggunakan [Sequelize](https://sequelize.org/).
+Terima kasih sudah mengikuti tulisan asal-asalan ini, sampai jumpa di **Node REST API Series Part 2**.
+
+Jika tulisan ini dirasa bermanfaat, feel free to share it to your friends, colleagues or anyone. _See youu ~_

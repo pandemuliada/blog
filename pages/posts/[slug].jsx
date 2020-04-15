@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import matter from 'gray-matter'
-import Layout from '../../components/Layout'
 import { readingTime, formatDate } from '../../utils'
 import author from '../../settings/author'
 
+const Layout = dynamic(() => import('../../components/Layout'))
 const ReactMarkdown = dynamic(() => import('react-markdown'))
 const Heading = dynamic(() => import('../../components/Markdown/Heading'))
 const Link = dynamic(() => import('../../components/Markdown/Link'))
@@ -11,10 +11,10 @@ const InlineCode = dynamic(() => import('../../components/Markdown/InlineCode'))
 const BlockCode = dynamic(() => import('../../components/Markdown/BlockCode'))
 
 const styles = {
-  title: 'text-4xl md:text-5xl font-medium text-gray-800 mb-0',
+  title: 'text-4xl md:text-5xl font-medium text-gray-800 text-center',
 }
 
-const PostDetail = (props) => {
+const PostDetail = props => {
   const { content, data } = props
 
   return (
@@ -26,25 +26,22 @@ const PostDetail = (props) => {
         url={`/posts/${data.slug}`}
         type="article"
         ogImage={data.heroImage}
-        useContainer
       >
-        <section className="mt-5">
-          <h2 className={styles.title}>{data.title}</h2>
-          <div className="text-gray-600 italic mb-5">
+        <section className="md:w-900 mx-auto">
+          <div className="text-gray-600 italic mb-1 mb-8 text-center">
             <span>
-              {formatDate(data.createdAt)} - {readingTime(content)} menit
+              {formatDate(data.createdAt)} • {readingTime(content)} menit
             </span>
+            <h2 className={styles.title}>{data.title}</h2>
           </div>
           {data.heroImage && (
-            <img
-              src={data.heroImage}
-              alt={data.title}
-              className="w-full mb-5"
-            />
+            <div className="w-full mb-12">
+              <img src={data.heroImage} alt={data.title} className="w-full" />
+            </div>
           )}
         </section>
 
-        <article>
+        <article className="w-10/12 mx-auto md:container">
           <ReactMarkdown
             escapeHtml={false}
             source={content}
@@ -54,12 +51,11 @@ const PostDetail = (props) => {
               code: BlockCode,
               inlineCode: InlineCode,
               link: Link,
-              // list: List,
             }}
           />
         </article>
 
-        <div className="mt-12">
+        <div className="mt-12 w-10/12 mx-auto md:container">
           {data.categories?.map((category, index) => (
             <span
               key={index}
@@ -70,7 +66,7 @@ const PostDetail = (props) => {
           ))}
         </div>
 
-        <div className="mb-8">
+        <div className="mb-8 w-10/12 mx-auto md:container">
           <hr className="my-6" />
           <span className="text-gray-600">Ditulis oleh</span>
           <h3 className="text-2xl font-bold mb-2 text-gray-700">
@@ -103,7 +99,7 @@ const PostDetail = (props) => {
   )
 }
 
-PostDetail.getInitialProps = async (context) => {
+PostDetail.getInitialProps = async context => {
   const { slug } = context.query
 
   const content = await import(`../../posts/${slug}.md`)
