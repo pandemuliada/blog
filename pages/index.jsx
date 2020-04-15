@@ -19,9 +19,9 @@ const Home = ({ posts }) => {
           <h1 className="text-4xl font-bold text-gray-800">Halo semua ✋</h1>
           <p className="mt-4">
             Selamat datang di blog pribadi saya. Saya <b>Pande Muliada</b>.
-            Beginner Front End Developer dari Bali, Indonesia. Di blog ini saya
-            akan membagikan hal-hal seputar programming dan mungkin curhatan
-            serta pengalaman saya hehe ✌️
+            Front End Developer dari Bali, Indonesia. Di blog ini saya akan
+            membagikan hal-hal seputar programming dan mungkin curhatan serta
+            pengalaman saya hehe ✌️
           </p>
           <p>
             Oiya, tulisan di blog ini juga ada di medium saya,{' '}
@@ -40,7 +40,7 @@ const Home = ({ posts }) => {
             repositorinya{' '}
             <a
               className="text-blue-400 underline"
-              href="https://github.com/pandemuliada/Next-Static-Markdown-Blog"
+              href="https://github.com/pandemuliada/next-static-markdown-blog-starter"
             >
               disini
             </a>

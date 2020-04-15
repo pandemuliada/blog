@@ -29,48 +29,58 @@ _So, what are you waiting for? open your code editor and let's begin!_
 
 Pertama kita buat folder dan lakukan init project, oiya, saya makenya `yarn`, kalau kalian pakenya npm nanti sesuaikan aja commandnya, cek [disini](https://classic.yarnpkg.com/en/docs/migrating-from-npm/). Ketik command dibawah di terminal (cmd, powershell or whatever you use)
 
-    mkdir node-rest-api && cd node-rest-api
+```bash
+  mkdir node-rest-api && cd node-rest-api
 
-    npm init -y
-    ## OR ##
-    yarn init -y
+  npm init -y
+  ## OR ##
+  yarn init -y
+```
 
 Selanjutnya kita install package-package yang diperlukan. Disini saya akan memakai express.
 
-    yarn add express nodemon cors
+```bash
+  yarn add express nodemon cors
+```
 
 Selanjutnya buat file dengan nama `server.js`
 
-    const express = require('express')
-    const app = express()
-    const cors = require('cors')
+```js
+const express = require('express')
+const app = express()
+const cors = require('cors')
 
-    const port = 3000 || process.env.PORT
+const port = 3000 || process.env.PORT
 
-    app.use(cors())
+app.use(cors())
 
-    app.get('/', (req, res) => {
-      res.send({ message: 'Hello node for backend!' })
-    })
+app.get('/', (req, res) => {
+  res.send({ message: 'Hello node for backend!' })
+})
 
-    app.listen(port, () => console.log(`Server is running on http://localhost:${port}`))
+app.listen(port, () =>
+  console.log(`Server is running on http://localhost:${port}`)
+)
+```
 
 Selanjutnya kita ubah `package.json` di bagian `main` dan `scripts`, dependenciesnya jangan diubah ya, karena itu otomatis ditambahkan ketika menambah package
 
-    {
-      "name": "node-rest-api",
-      "version": "1.0.0",
-      "main": "server.js",
-      "license": "MIT",
-      "scripts": {
-        "start": "nodemon server.js"
-      },
-      "dependencies": {
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "nodemon": "^2.0.3"
-      }
-    }
+```json
+{
+  "name": "node-rest-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
+```
 
 Sekarang ketik `yarn start` di terminal dan ketik [`http://localhost:3000`](http://localhost:3000) di browser anda, apa yang tampil?
 

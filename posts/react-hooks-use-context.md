@@ -1,35 +1,40 @@
 ---
-title: "React Hooks : useContext"
-description: "Berkenalan dengan React Hook : useContext"
-slug: "react-hooks-use-context"
-createdAt: "2020-03-17"
-heroImage: "/static/posts/use-context.png"
-categories: ["react", "front end"]
+title: 'React Hooks : useContext'
+description: 'Berkenalan dengan React Hook : useContext'
+slug: 'react-hooks-use-context'
+createdAt: '2020-03-17'
+heroImage: '/static/posts/use-context.png'
+categories: ['react', 'front end']
 ---
 
 Halo semua, gimana kabar kalian ? semoga baik-baik saja ya. Tetap jaga kesehatan ya, dan stay at home untuk sementara. Kali ini kita akan melanjutkan mempelajari tentang react hook yaitu **useContext**.
 
 ## Apa itu useContext
-Context digunakan ketika kita ingin menyimpan state secara global, sehingga state itu bisa digunakan oleh komponen-komponen lain yang membutuhkan. Context akan terasa manfaatnya jika komponen kita sudah banyak dan bertingkat-tingkat sehingga kita tidak perlu melakukan *"prop-drilling"* untuk mengirim data ke komponen yang jauh berada di bawah.
+
+Context digunakan ketika kita ingin menyimpan state secara global, sehingga state itu bisa digunakan oleh komponen-komponen lain yang membutuhkan. Context akan terasa manfaatnya jika komponen kita sudah banyak dan bertingkat-tingkat sehingga kita tidak perlu melakukan _"prop-drilling"_ untuk mengirim data ke komponen yang jauh berada di bawah.
 
 Sebelum hooks rilis menurut saya pribadi menggunakan context caranya cukup ribet. Tapi dengan adanya useContext penggunaan context jadi lebih mudah. Langsung saja kita coba ya.
 
 ## Membuat Context
+
 Kali ini kita menggunakan contoh kasus counter seperti sebelumnya. Pertama kita membuat contextnya dulu, saya menamainya `CounterContext.js`.
 
-```
+```jsx
 import React, { createContext } from 'react'
 const CounterContext = createContext(null)
 
 export default CounterContext
 ```
+
 Selanjutnya kita akan membuat context provider
 
 ## Membuat Context Provider
+
 Sesuai dengan namanya context provider berfungsi untuk provide/menyediakan state atau data yang akan digunakan komponen lainnya. Saya menamainya `CounterProvider.js`
-```
-import React, { useState } from "react"
-import CounterContext from "./CounterContext"
+
+```jsx
+import React, { useState } from 'react'
+import CounterContext from './CounterContext'
 
 const CounterProvider = ({ children }) => {
   const [count, setCount] = useState(1)
@@ -42,19 +47,21 @@ const CounterProvider = ({ children }) => {
 
 export default CounterProvider
 ```
+
 Pada kode diatas kita membuat context provider dengan valuenya adalah state `count` dan fungsi untuk mengubah state `count` itu sendiri yaitu `setCount`. Selanjutnya kita akan membungkus komponen yang akan menggunakan state tersebut dengan context provider yang telah kita buat. Pada kasus ini saya akan melakukannya di file `App.js` yang berada di folder src.
 
 ## Menggunakan useContext
-Disini kita membungkus komponen `App` dengan menggunakan `CounterProvider` sehingga komponen lain seperti `DeepComponent` dan `AnotherComponent` bisa menggunakan state yang ada pada context. 
 
-```
+Disini kita membungkus komponen `App` dengan menggunakan `CounterProvider` sehingga komponen lain seperti `DeepComponent` dan `AnotherComponent` bisa menggunakan state yang ada pada context.
+
+```jsx
 // App.js
 
-import React from "react"
+import React from 'react'
 
-import CounterProvider from "./CounterProvider"
-import DeepComponent from "./DeepComponent"
-import AnotherComponent from "./AnotherComponent"
+import CounterProvider from './CounterProvider'
+import DeepComponent from './DeepComponent'
+import AnotherComponent from './AnotherComponent'
 
 export default function App() {
   return (
@@ -69,13 +76,14 @@ export default function App() {
 ```
 
 ### 1. Deep Component
+
 Berikut adalah kode dari `DeepComponent.js`
 
-```
+```jsx
 // DeepComponent.js
 
-import React, { useContext } from "react"
-import CounterContext from "./CounterContext"
+import React, { useContext } from 'react'
+import CounterContext from './CounterContext'
 
 const DeepComponent = () => {
   const { count, setCount } = useContext(CounterContext)
@@ -90,14 +98,16 @@ const DeepComponent = () => {
 
 export default DeepComponent
 ```
+
 ### 2. Another Component
+
 Berikut adalah kode dari `AnotherComponent.js`
 
-```
+```jsx
 // AnotherComponent.js
 
-import React, { useContext } from "react"
-import CounterContext from "./CounterContext"
+import React, { useContext } from 'react'
+import CounterContext from './CounterContext'
 
 const AnotherComponent = () => {
   const { count } = useContext(CounterContext)
@@ -124,5 +134,6 @@ Misalkan state kita taruh di `DeepComponent` yang berada jauh di dalam/bawah. Ta
 Oke sekian dulu tulisan kali ini, semoga bermanfaat dan membantu. Untuk code penggunaan context di tulisan ini bisa di cek [disini](https://codesandbox.io/s/elegant-franklin-ck9m4)
 
 ### Links
+
 - [React Official Docs - Context](https://reactjs.org/docs/context.html)
 - [React Official Docs - useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
