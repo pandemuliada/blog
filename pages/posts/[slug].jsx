@@ -27,8 +27,8 @@ const PostDetail = props => {
         type="article"
         ogImage={data.heroImage}
       >
-        <section className="md:w-900 mx-auto">
-          <div className="text-gray-600 italic mb-1 mb-8 text-center">
+        <section className="w-full md:w-900 mx-auto">
+          <div className="text-gray-600 italic mb-1 mb-8 text-center w-10/12 mx-auto md:w-full">
             <span>
               {formatDate(data.createdAt)} • {readingTime(content)} menit
             </span>
