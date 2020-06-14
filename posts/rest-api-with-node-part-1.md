@@ -19,7 +19,7 @@ Nah, di sisi backend biasanya menggunakan arsitektur REST yang ciri utamanya ada
 
 Gimana cara kerjanya? Gini, Client akan melakukan request ke server dengan menggunakan method HTTP (get, post, put, delete, etc) dan server akan memproses data dan selanjutnya mengirimkan respon ke client.
 
-![Something](/static/posts/node-rest-api-series/how-rest-work.png)
+![How Rest Work](https://res.cloudinary.com/pandemuliada/image/upload/v1592149079/blog/how-rest-work_spwiyf.png)
 
 _So, what are you waiting for? open your code editor and let's begin!_
 
