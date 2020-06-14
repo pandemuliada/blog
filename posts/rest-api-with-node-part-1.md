@@ -1,19 +1,19 @@
 ---
-title: 'Node REST API Series - Part 1'
-description: 'Series membuat REST API menggunakan Node JS. Di part pertama ini kita akan melakukan inisialisasi projek'
-slug: 'node-rest-api-series-part-1'
+title: 'REST API with Node - Part 1'
+description: 'Series membuat REST API menggunakan Node JS & Express. Di part pertama ini kita akan melakukan inisialisasi projek'
+slug: 'rest-api-with-node-part-1'
 createdAt: '2020-04-14'
-heroImage: '/static/posts/node-rest-api-series/how-rest-work.png  '
+heroImage: 'https://res.cloudinary.com/pandemuliada/image/upload/v1592149079/blog/how-rest-work_spwiyf.png'
 categories: ['nodejs', 'backend', 'express']
 ---
 
-Sekitar beberapa minggu yang lalu (sampai sekarang) saya sedang mempelajari backend yaitu membuat sebuah REST API menggunakan Node. Jadi kali ini saya ingin membuat sebuah series kecil-kecilan terkait membuat REST API menggunakan Node.
+Sekitar beberapa minggu yang lalu (sampai sekarang) aku lagi belajar backend yaitu membuat sebuah REST API menggunakan Node. Jadi kali ini aku mau buat sebuah series kecil-kecilan terkait membuat REST API menggunakan Node.
 
 ## Apa itu REST
 
-Menurut beberapa sumber yang saya baca, _"REST adalah sebuah arsitektur metode komunikasi yang menggunakan protokol HTTP untuk melakukan pertukaran data"_.
+Menurut beberapa sumber yang aku baca, _"REST adalah sebuah arsitektur metode komunikasi yang menggunakan protokol HTTP untuk melakukan pertukaran data"_.
 
-Menurut pengalaman saya, sebuah aplikasi biasanya dipisah antara backend dan frontend guna memudahkan pengembangannya. Sehingga developer bisa fokus ke jobdesk mereka masing-masing.
+Menurut pengalamanku, sebuah aplikasi biasanya dipisah antara backend dan frontend guna memudahkan pengembangannya. Sehingga developer bisa fokus ke jobdesk mereka masing-masing.
 
 Nah, di sisi backend biasanya menggunakan arsitektur REST yang ciri utamanya adalah responsenya yang berbentuk JSON.
 
@@ -27,7 +27,7 @@ _So, what are you waiting for? open your code editor and let's begin!_
 
 ## Ngoding Kita, Yuhuu 🎉
 
-Pertama kita buat folder dan lakukan init project, oiya, saya makenya `yarn`, kalau kalian pakenya npm nanti sesuaikan aja commandnya, cek [disini](https://classic.yarnpkg.com/en/docs/migrating-from-npm/). Ketik command dibawah di terminal (cmd, powershell or whatever you use)
+Pertama kita buat folder dan lakukan init project, oiya, aku pake `yarn`, kalau kalian pakenya npm nanti sesuaikan aja commandnya, cek [disini](https://classic.yarnpkg.com/en/docs/migrating-from-npm/). Ketik command dibawah di terminal (cmd, powershell or whatever you use)
 
 ```bash
   mkdir node-rest-api && cd node-rest-api
@@ -37,7 +37,7 @@ Pertama kita buat folder dan lakukan init project, oiya, saya makenya `yarn`, ka
   yarn init -y
 ```
 
-Selanjutnya kita install package-package yang diperlukan. Disini saya akan memakai express.
+Selanjutnya kita install package-package yang diperlukan. Disini kita akan memakai express.
 
 ```bash
   yarn add express nodemon cors
@@ -63,7 +63,7 @@ app.listen(port, () =>
 )
 ```
 
-Selanjutnya kita ubah `package.json` di bagian `main` dan `scripts`, dependenciesnya jangan diubah ya, karena itu otomatis ditambahkan ketika menambah package
+Selanjutnya kita ubah `package.json` di bagian `main` dan `scripts`, dependenciesnya jangan diubah ya, karena itu otomatis ditambahkan ketika menambah / install package
 
 ```json
 {
@@ -86,7 +86,7 @@ Sekarang ketik `yarn start` di terminal dan ketik [`http://localhost:3000`](http
 
 Jika yang tampil adalah `{ "message": "Helo node for backend!" }` . Congratulation, you have create your first nodejs backend using express~ 🥳🎉
 
-Oke sekarang akan saya jelaskan mulai dari file `server.js` . Jadi apa yang sebenarnya telah kita lakukan?
+Oke sekarang akan aku jelasin mulai dari file `server.js` . Jadi apa yang sebenarnya telah kita lakukan?
 
 - Line 1 : import package express
 - Line 2 : instansiasi express, biar bisa make fungsi-fungsinya express
@@ -102,3 +102,8 @@ Di part 2 kita akan lanjut membuat membuat route, controller, model menggunakan 
 Terima kasih sudah mengikuti tulisan asal-asalan ini, sampai jumpa di **Node REST API Series Part 2**.
 
 Jika tulisan ini dirasa bermanfaat, feel free to share it to your friends, colleagues or anyone. _See youu ~_
+
+### Github Repository
+
+Berikut github repo untuk series ini.  
+**[Node Rest Api Series Repository](https://github.com/pandemuliada/node-rest-api-series)**

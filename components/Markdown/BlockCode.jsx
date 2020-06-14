@@ -5,7 +5,6 @@ export default ({ language, value }) => {
   return (
     <div className="mb-5">
       <SyntaxHighlighter
-        showLineNumbers
         language={language}
         style={base16AteliersulphurpoolLight}
       >
