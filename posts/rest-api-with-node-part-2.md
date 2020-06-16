@@ -156,11 +156,11 @@ module.exports = {
 }
 ```
 
-Menurut pemahamannya Mul _"**Migration** adalah gambaran dari struktur dari tabel yang akan dibuat"_.
+Menurut pemahamannya Mul _"**Migration** adalah gambaran atau struktur dari tabel yang akan dibuat atau diubah"_.
 
 Di file migration ini kita menentukan nama table dan kolom-kolomnya. Jadi kalian tidak usah membuat tabel manual lewat _phpmyadmin_, _adminer_ atau sejenisnya.
 
-Terdapat 2 function disana yaitu `up` dan `down` ketika migration dijalankan maka function yang dijalankan adalah `up` yaitu membuat tabel beserta kolom dan tipe datanya, dan apapun konfigurasi yang terdapat di file migration tersebut. Jika ingin menghapus table kita tinggal melakukan yang namanya _rollback_ (migration di -_undo_). Langsung saja kita coba jalankan migrationnya dengan perintah berikut.
+Terdapat 2 function disana yaitu `up` dan `down`. Ketika migration dijalankan, function yang dijalankan adalah `up`, yaitu membuat tabel, kolom beserta tipe datanya, dan apapun konfigurasi yang ada di file migration tersebut. Jika ingin menghapus table kita tinggal melakukan yang namanya rollback (migration di - undo). Langsung saja kita coba jalankan migrationnya dengan perintah berikut.
 
 ```bash
 yarn sequelize-cli db:migrate
@@ -203,7 +203,7 @@ Jadi bisa dikatakan model digunakan untuk membantu kita melakukan _query_ ke tab
 
 ## Controller
 
-Sesuai namanya doi yang bakal ngatur atau mengolah request dari client dan juga memberikan response atas request tersebut. Semoga doi kalian kayak si controller ya, biar pas melakukan request ada response-nya. Gak cuma di read aja request-nya tapi gak dikasi response. Hiyayayaya kasian 😂
+Sesuai namanya, doi yang bakal ngatur atau mengolah request dari client dan juga memberikan response atas request tersebut. Semoga doi kalian kayak si controller ya, biar pas melakukan request ada response-nya. Gak cuma di read aja request-nya tapi gak dikasi response. Hiyayayaya kasian 😂
 
 Bercanda ya hehe. Kita lanjut buat folder `controllers` dan didalamnya buat file dengan nama `category.controller.js`. Dan ketik kode dibawah ini.
 
@@ -308,7 +308,7 @@ Pada contoh diatas kita memanggil fungsi `create` dari model `Category`. Fungsi 
 
 ## Routes
 
-Nah kita belum bisa nih melakukan request ke backend, karena routenya belum ada. Jadi kita buat dulu _routes_-nya. Silahkan ikuti kode dibawah ya.
+Nah, kita belum bisa nih melakukan request ke backend, karena routenya belum ada. Jadi kita buat dulu _routes_-nya. Silahkan ikuti kode dibawah ya.
 
 ```javascript
 // routes/category.route.js
@@ -367,19 +367,19 @@ app.get('/', (req, res) => {
 app.use(appRoutes())
 
 app.listen(port, () =>
-  console.log(`Server is running on <http://localhost>:${port}`)
+  console.log(`Server is running on http://localhost:${port}`)
 )
 ```
 
-Nah jadi apa yang kita lakukan diatas? Kita me-_register_ route untuk category, agar client (frontend) bisa melakukan request ke backend. Sekarang jika kalian coba di browser kalian ke url `[http://localhost:3000/categories](http://localhost:3000/categories)` pasti akan menampilan tanda array kosong karena memang belum ada data di table category. Jadi kalian bisa coba menambahkan data category lewat `curl` di terminal atau lewat Postman maupun Insomnia.
+Nah jadi apa yang kita lakukan diatas? Kita me-_register_ route untuk category, agar client (frontend) bisa melakukan request ke backend. Sekarang jika kalian coba di browser kalian ke url [http://localhost:3000/categories](http://localhost:3000/categories) pasti akan menampilan tanda array kosong karena memang belum ada data di table category. Jadi kalian bisa coba menambahkan data category lewat `curl` di terminal atau lewat Postman maupun Insomnia.
 
 ```bash
 curl -d "name=New Category" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/categories
 ```
 
-Jika kalian coba lagi hit url `[localhost:3000/categories](http://localhost:3000/categories)` di browser, maka akan tampil tuh datanya. Oke kita simpulkan dulu alur kerjanya gimana.
+Jika kalian coba lagi hit url [http://localhost:3000/categories](http://localhost:3000/categories) di browser, maka akan tampil tuh datanya. Oke kita simpulkan dulu alur kerjanya gimana.
 
-Jadi pertama client (frontend) bakal melakukan request ke url / route yang sudah di-_register_ di backend. Misal route yang di-_request_ adalah `[localhost:3000/categories](<http://localhost:3000/categories>)`. Maka, route akan meneruskan request ke controller di fungsi yang bersangkutan yaitu `index`. Nah, di fungsi ini kita menggunakan model bersangkutan (`Category`) untuk mengambil semua data dari database. Dalam kasus ini mengambil data dari tabel `categories`. Jika berhasil, maka controller akan memberikan response berupa json yang berisi data semua category. Jika gagal maka akan diberikan response error.
+Jadi pertama client (frontend) bakal melakukan request ke url / route yang sudah di-_register_ di backend. Misal route yang di-_request_ adalah [http://localhost:3000/categories](http://localhost:3000/categories). Maka, route akan meneruskan request ke controller di fungsi yang bersangkutan yaitu `index`. Nah, di fungsi ini kita menggunakan model bersangkutan (`Category`) untuk mengambil semua data dari database. Dalam kasus ini mengambil data dari tabel `categories`. Jika berhasil, maka controller akan memberikan response berupa json yang berisi data semua category. Jika gagal maka akan diberikan response error.
 
 Gambarannya kira-kira seperti dibawah
 
