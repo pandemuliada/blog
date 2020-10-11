@@ -18,18 +18,14 @@ ol {
 }
 
 li {
-  @apply mb-2 leading-7 text-gray-700;
+  /* @apply mb-2 leading-7 text-gray-700; */
 }
 
 p {
-  @apply text-gray-700 leading-7 font-normal mb-5;
+  /* @apply text-gray-700 leading-7 font-normal mb-5; */
 }
 
 @responsive {
-  .container {
-    width: 650px;
-    margin: auto;
-  }
   .w-900 {
     width: 900px;
   }

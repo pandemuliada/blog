@@ -46,6 +46,31 @@ const Home = ({ posts }) => {
             </a>
           </p>
         </section>
+
+        <hr className="my-6" />
+
+        <h3 className={styles.title}>Postingan Terbaru</h3>
+        <section>
+          {posts.map(({ data }) => (
+            <article key={data.slug}>
+              <PostCard
+                previewImage={data.heroImage}
+                title={data.title}
+                description={data.description}
+                href="/posts/[slug]"
+                as={`/posts/${data.slug}`}
+              />
+            </article>
+          ))}
+        </section>
+
+        <div className="text-center mt-10">
+          <Link href="/posts" as="/posts">
+            <a className="bg-blue-100 text-blue-500 px-4 py-2 rounded">
+              Lihat semua postingan
+            </a>
+          </Link>
+        </div>
       </Layout>
     </>
   )

@@ -1,11 +1,12 @@
 import dynamic from 'next/dynamic'
 import matter from 'gray-matter'
 import { importAll } from '../../utils'
+import { getAllPosts } from '../api'
 
 const Layout = dynamic(() => import('../../components/Layout'))
 const PostCard = dynamic(() => import('../../components/PostCard'))
 
-const Posts = props => {
+const Posts = (props) => {
   const { posts } = props
 
   return (
@@ -25,6 +26,7 @@ const Posts = props => {
                 title={data.title}
                 description={data.description}
                 href="/posts/[slug]"
+                // href={`/posts/${data.slug}`}
                 as={`/posts/${data.slug}`}
               />
             </article>
@@ -35,13 +37,16 @@ const Posts = props => {
   )
 }
 
-Posts.getInitialProps = async () => {
-  const files = importAll(require.context('../../posts', true, /\.md$/))
+export async function getStaticProps() {
+  const allPosts = await getAllPosts()
+  // const files = importAll(require.context('../../posts', true, /\.md$/))
 
-  const posts = files.map(file => matter(file.default))
+  // const posts = files.map((file) => matter(file.default))
 
   return {
-    posts,
+    props: {
+      posts: allPosts,
+    },
   }
 }
 

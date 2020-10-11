@@ -1,6 +1,6 @@
 import NextHead from 'next/head'
 
-const Head = props => {
+const Head = (props) => {
   const {
     title,
     description,
@@ -17,6 +17,10 @@ const Head = props => {
       <meta name="site_name" content={process.env.SITE_NAME} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={description} />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet"
+      />
 
       <meta property="og:url" content={url || ''} />
       <meta

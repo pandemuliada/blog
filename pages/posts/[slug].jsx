@@ -2,6 +2,13 @@ import dynamic from 'next/dynamic'
 import matter from 'gray-matter'
 import { readingTime, formatDate } from '../../utils'
 import author from '../../settings/author'
+import { getAllPosts, getPostBySlug } from '../api'
+// import Layout from '../../components/Layout'
+// import ReactMarkdown from 'react-markdown'
+// import Heading from '../../components/Markdown/Heading'
+// import Link from '../../components/Markdown/Link'
+// import InlineCode from '../../components/Markdown/InlineCode'
+// import BlockCode from '../../components/Markdown/BlockCode'
 
 const Layout = dynamic(() => import('../../components/Layout'))
 const ReactMarkdown = dynamic(() => import('react-markdown'))
@@ -14,7 +21,7 @@ const styles = {
   title: 'text-4xl md:text-5xl font-medium text-gray-800 text-center',
 }
 
-const PostDetail = props => {
+const PostDetail = (props) => {
   const { content, data } = props
 
   return (
@@ -50,7 +57,7 @@ const PostDetail = props => {
               heading: Heading,
               code: BlockCode,
               inlineCode: InlineCode,
-              link: Link,
+              // link: Link,
             }}
           />
         </article>
@@ -99,14 +106,23 @@ const PostDetail = props => {
   )
 }
 
-PostDetail.getInitialProps = async context => {
-  const { slug } = context.query
+export async function getStaticProps(context) {
+  const post = await getPostBySlug(context.params.slug)
+  const data = post.data
+  const content = post.content
+  return {
+    props: { data, content },
+  }
+}
 
-  const content = await import(`../../posts/${slug}.md`)
-  const data = matter(content.default)
+export async function getStaticPaths() {
+  let posts = await getAllPosts()
+
+  const paths = posts.map((post) => `/posts/${post.data.slug}`)
 
   return {
-    ...data, // it returns { content: "string", data: { title, date, ... } }
+    paths,
+    fallback: false,
   }
 }
 
