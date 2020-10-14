@@ -1,5 +1,5 @@
-import Head from './Head'
-import Footer from './Footer'
+import Head from '@components/Head'
+import Nav from '@components/Nav'
 
 const Layout = ({ children, container, ...rest }) => {
   return (
@@ -10,7 +10,8 @@ const Layout = ({ children, container, ...rest }) => {
         description={rest.description || process.env.SITE_SHORT_DESCRIPTION}
         {...rest}
       />
-      <div className={container && 'container mx-auto md:w-800'}>
+      <Nav />
+      <div className={container && 'container mx-auto px-6 md:px-0 md:w-800'}>
         {children}
       </div>
     </>

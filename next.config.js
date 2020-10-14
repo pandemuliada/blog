@@ -13,7 +13,7 @@ module.exports = {
     return config
   },
   env: {
-    SITE_NAME: 'Pande Muliada',
+    SITE_NAME: 'Pande Muliada — Front End Developer',
     SITE_SHORT_DESCRIPTION: "Pande Muliada's personal blog",
   },
   exportTrailingSlash: true,

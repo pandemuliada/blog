@@ -1,0 +1,32 @@
+ul,
+li {
+  @apply mb-5;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+li {
+  @apply mb-2 text-gray;
+}
+
+p {
+  @apply text-gray leading-relaxed;
+}
+
+.v-align {
+  @apply flex items-center;
+}
+
+@layer utilities {
+  @responsive {
+    .w-800 {
+      width: 800px;
+    }
+  }
+}

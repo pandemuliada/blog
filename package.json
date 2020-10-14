@@ -25,6 +25,7 @@
     "@next/bundle-analyzer": "^9.2.2",
     "autoprefixer": "^9.7.4",
     "cross-env": "^7.0.0",
+    "serve": "^11.3.2",
     "tailwindcss": "^1.8.13"
   }
 }

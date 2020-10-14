@@ -2,17 +2,15 @@ import Link from 'next/link'
 
 export default () => {
   return (
-    <nav className="bg-white shadow py-5 mb-10">
-      <div className="w-10/12 mx-auto md:w-900">
-        <div className="flex items-center text-gray-700">
+    <nav className="fixed bg-white py-5 pl-16 pr-5 w-48 h-screen">
+      <div className="flex items-center h-full">
+        <div className="text-gray-700 flex flex-col">
           <Link href="/" as="/">
-            <a className="font-bold italic text-xl">pandemuliada</a>
+            <a className="text-gray">About</a>
           </Link>
-          <div className="overflow-y-auto ml-auto">
-            <Link href="/posts" as="/posts">
-              <a className="hover:text-blue-500">Posts</a>
-            </Link>
-          </div>
+          <Link href="/tag/[tag]" as="/tag/technical">
+            <a className="text-gray mt-3 ml-3">Technical</a>
+          </Link>
         </div>
       </div>
     </nav>
