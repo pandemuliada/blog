@@ -8,6 +8,12 @@ export default () => {
           <Link href="/" as="/">
             <a className="text-gray">About</a>
           </Link>
+          <Link href="/now" as="/now">
+            <a className="text-gray mt-3">Now</a>
+          </Link>
+          <Link href="/posts" as="/posts">
+            <a className="text-gray mt-3">Blog</a>
+          </Link>
           <Link href="/tag/[tag]" as="/tag/technical">
             <a className="text-gray mt-3 ml-3">Technical</a>
           </Link>

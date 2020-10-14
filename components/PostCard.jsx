@@ -1,15 +1,15 @@
 import Link from 'next/link'
 
 const styles = {
-  title: 'text-xl font-medium text-gray-700 mb-1',
+  title: 'font-medium text-darkest-gray mb-1',
 }
 
-export default ({ previewImage, title, description, href, as }) => {
+const PostCard = ({ previewImage, title, description, href, as }) => {
   return (
     <>
       <Link href={href} as={as}>
         <a>
-          <div className="bg-white mb-5 rounded cursor-pointer border border-gray-300 hover:shadow">
+          <div className="bg-white mb-5 rounded cursor-pointer">
             {previewImage && (
               <img
                 src={previewImage}
@@ -18,8 +18,10 @@ export default ({ previewImage, title, description, href, as }) => {
               />
             )}
             <div className="px-4 pb-2 pt-3">
-              <h3 className={styles.title}>{title}</h3>
-              <p className="text-gray-600 mb-2">{description}</p>
+              <h3 className={styles.title} style={{ fontSize: '1.3rem' }}>
+                {title}
+              </h3>
+              <p className="text-gray mb-2">{description}</p>
             </div>
           </div>
         </a>
@@ -27,3 +29,5 @@ export default ({ previewImage, title, description, href, as }) => {
     </>
   )
 }
+
+export default PostCard

@@ -1,51 +1,44 @@
-import dynamic from 'next/dynamic'
-import matter from 'gray-matter'
-import { importAll } from '../../utils'
 import { getAllPosts } from '../api'
-
-const Layout = dynamic(() => import('../../components/Layout'))
-const PostCard = dynamic(() => import('../../components/PostCard'))
+import Layout from '@layouts/index'
+import PostCard from '@components/PostCard'
 
 const Posts = (props) => {
   const { posts } = props
 
+  console.log(posts)
+
   return (
     <>
-      <Layout title="Posts" ogTitle="Posts" useContainer>
-        <section className="text-center mb-6">
-          <h1 className="text-4xl font-medium text-gray-800">
-            Semua Postingan
-          </h1>
-        </section>
+      <Layout title="Posts" ogTitle="Posts" container>
+        <div className="pt-20 md:pt-24" style={{ backgroundColor: '#fefefe' }}>
+          <section className="text-center mb-10">
+            <h1 className="text-lg text-darkest-gray">Semua</h1>
+          </section>
 
-        <section>
-          {posts.map(({ data }) => (
-            <article key={data.slug}>
-              <PostCard
-                previewImage={data.heroImage}
-                title={data.title}
-                description={data.description}
-                href="/posts/[slug]"
-                // href={`/posts/${data.slug}`}
-                as={`/posts/${data.slug}`}
-              />
-            </article>
-          ))}
-        </section>
+          <section>
+            {posts.map(({ data }) => (
+              <article key={data.slug}>
+                <PostCard
+                  title={data.title}
+                  description={data.description}
+                  href="/posts/[slug]"
+                  as={`/posts/${data.slug}`}
+                />
+              </article>
+            ))}
+          </section>
+        </div>
       </Layout>
     </>
   )
 }
 
 export async function getStaticProps() {
-  const allPosts = await getAllPosts()
-  // const files = importAll(require.context('../../posts', true, /\.md$/))
-
-  // const posts = files.map((file) => matter(file.default))
+  const posts = await getAllPosts()
 
   return {
     props: {
-      posts: allPosts,
+      posts: posts,
     },
   }
 }

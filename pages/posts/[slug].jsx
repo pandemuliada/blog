@@ -10,7 +10,7 @@ import { getAllPosts, getPostBySlug } from '../api'
 // import InlineCode from '../../components/Markdown/InlineCode'
 // import BlockCode from '../../components/Markdown/BlockCode'
 
-const Layout = dynamic(() => import('../../components/Layout'))
+const Layout = dynamic(() => import('@layouts/index'))
 const ReactMarkdown = dynamic(() => import('react-markdown'))
 const Heading = dynamic(() => import('../../components/Markdown/Heading'))
 const Link = dynamic(() => import('../../components/Markdown/Link'))
@@ -18,7 +18,7 @@ const InlineCode = dynamic(() => import('../../components/Markdown/InlineCode'))
 const BlockCode = dynamic(() => import('../../components/Markdown/BlockCode'))
 
 const styles = {
-  title: 'text-4xl md:text-5xl font-medium text-gray-800 text-center',
+  title: 'text-xl md:text-5xl font-medium text-darkest-gray text-center',
 }
 
 const PostDetail = (props) => {
@@ -27,6 +27,7 @@ const PostDetail = (props) => {
   return (
     <>
       <Layout
+        container
         title={data.title}
         ogTitle={data.title}
         description={data.description}
@@ -34,18 +35,18 @@ const PostDetail = (props) => {
         type="article"
         ogImage={data.heroImage}
       >
-        <section className="w-full md:w-900 mx-auto">
-          <div className="text-gray-600 italic mb-1 mb-8 text-center w-10/12 mx-auto md:w-full">
-            <span>
-              {formatDate(data.createdAt)} • {readingTime(content)} menit
-            </span>
-            <h2 className={styles.title}>{data.title}</h2>
-          </div>
+        <section className="w-full mx-auto md:pt-24">
           {data.heroImage && (
-            <div className="w-full mb-12">
+            <div className="w-full">
               <img src={data.heroImage} alt={data.title} className="w-full" />
             </div>
           )}
+          <div className="text-gray-600 italic mb-1 mb-8 text-center w-10/12 mx-auto md:w-full">
+            <h2 className={styles.title}>{data.title}</h2>
+            <span className="text-gray">
+              {formatDate(data.createdAt)} • {readingTime(content)} menit
+            </span>
+          </div>
         </section>
 
         <article className="w-10/12 mx-auto md:container">

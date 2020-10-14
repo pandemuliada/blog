@@ -23,6 +23,7 @@ module.exports = {
     fontSize: {
       xl: '3rem',
       lg: '2rem',
+      md: '1.5rem',
       normal: '1rem',
     },
     fontWeight: {

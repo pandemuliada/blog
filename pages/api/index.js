@@ -11,7 +11,11 @@ export async function getAllPosts() {
       data: { ...data.data },
     })
   }
-  return posts
+
+  // Sort descending by created at
+  return posts.sort(
+    (a, b) => new Date(b.data.createdAt) - new Date(a.data.createdAt)
+  )
 }
 
 export async function getPostBySlug(slug) {
