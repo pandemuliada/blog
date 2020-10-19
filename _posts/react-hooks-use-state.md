@@ -4,7 +4,7 @@ slug: 'react-hooks-use-state'
 description: 'Berkenalan dengan React Hook : useState'
 createdAt: '2020-01-15'
 heroImage: '/static/posts/use-state.png'
-categories: ['react', 'front end']
+categories: ['react', 'front-end']
 ---
 
 Halo semua, apa kabar kalian ? semoga sehat-sehat saja ya. sudah makan ? yang belum makan, makan dulu agar fokus mengikuti tulisan asal asalan saya ini hehe. Kali ini kita akan membicarakan fitur terbaru dari react yaitu **hooks**. Nah apa itu react hooks ?

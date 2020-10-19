@@ -11,7 +11,7 @@ module.exports = {
       sans: ['Poppins', 'sans-serif'],
     },
     colors: {
-      default: '#4a5568',
+      primary: '#132743',
       transparent: 'transparent',
       white: '#ffffff',
       black: '#000000',
@@ -23,13 +23,15 @@ module.exports = {
     fontSize: {
       xl: '3rem',
       lg: '2rem',
-      md: '1.5rem',
-      normal: '1rem',
+      md: '1.3rem',
+      normal: '16px',
     },
     fontWeight: {
       thin: 100,
       light: 300,
       normal: 400,
+      medium: 500,
+      semibold: 600,
       bold: 700,
     },
     boxShadow: {

@@ -1,21 +1,15 @@
-import dynamic from 'next/dynamic'
-import matter from 'gray-matter'
-import { readingTime, formatDate } from '../../utils'
+import ReactMarkdown from 'react-markdown'
 import author from '../../settings/author'
+import { readingTime, formatDate, removeChar } from '../../utils'
 import { getAllPosts, getPostBySlug } from '../api'
-// import Layout from '../../components/Layout'
-// import ReactMarkdown from 'react-markdown'
-// import Heading from '../../components/Markdown/Heading'
-// import Link from '../../components/Markdown/Link'
-// import InlineCode from '../../components/Markdown/InlineCode'
-// import BlockCode from '../../components/Markdown/BlockCode'
-
-const Layout = dynamic(() => import('@layouts/index'))
-const ReactMarkdown = dynamic(() => import('react-markdown'))
-const Heading = dynamic(() => import('../../components/Markdown/Heading'))
-const Link = dynamic(() => import('../../components/Markdown/Link'))
-const InlineCode = dynamic(() => import('../../components/Markdown/InlineCode'))
-const BlockCode = dynamic(() => import('../../components/Markdown/BlockCode'))
+import Layout from '@layouts/index'
+import {
+  Heading,
+  Link,
+  Code,
+  BlockCode,
+  Paragraph,
+} from '@components/Markdown/index'
 
 const styles = {
   title: 'text-xl md:text-5xl font-medium text-darkest-gray text-center',
@@ -35,13 +29,13 @@ const PostDetail = (props) => {
         type="article"
         ogImage={data.heroImage}
       >
-        <section className="w-full mx-auto md:pt-24">
+        <section className="w-full mx-auto md:pt-16">
           {data.heroImage && (
             <div className="w-full">
               <img src={data.heroImage} alt={data.title} className="w-full" />
             </div>
           )}
-          <div className="text-gray-600 italic mb-1 mb-8 text-center w-10/12 mx-auto md:w-full">
+          <div className="text-darker-gray italic mt-2 mb-8 text-center w-10/12 mx-auto md:w-full">
             <h2 className={styles.title}>{data.title}</h2>
             <span className="text-gray">
               {formatDate(data.createdAt)} • {readingTime(content)} menit
@@ -57,24 +51,39 @@ const PostDetail = (props) => {
             renderers={{
               heading: Heading,
               code: BlockCode,
-              inlineCode: InlineCode,
-              // link: Link,
+              inlineCode: Code,
+              link: Link,
+              paragraph: Paragraph,
             }}
           />
         </article>
 
-        <div className="mt-12 w-10/12 mx-auto md:container">
+        <div className="mt-10 p-10" style={{ backgroundColor: '#f5f5f5' }}>
+          <p className="font-medium" style={{ fontSize: 18 }}>
+            Terima kasih sudah membaca.
+          </p>
+          <p className="italic">
+            Jika kamu menikmati tulisan ini dan merasa tulisan ini bermanfaat,
+            feel free to share it.
+          </p>
+        </div>
+
+        <div className="my-8 w-10/12 mx-auto md:container">
           {data.categories?.map((category, index) => (
-            <span
-              key={index}
-              className="bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm capitalize"
-            >
-              {category}
+            <span key={`${category}_${index}`}>
+              <Link href={`/category/${category}`} as={`/category/${category}`}>
+                <a
+                  style={{ backgroundColor: '#f5f5f5', fontSize: 14 }}
+                  className="inline-block no-underline text-gray px-3 py-2 mr-3 cursor-pointer capitalize"
+                >
+                  {removeChar(category, '-')}
+                </a>
+              </Link>
             </span>
           ))}
         </div>
 
-        <div className="mb-8 w-10/12 mx-auto md:container">
+        {/* <div className="mb-8 w-10/12 mx-auto md:container">
           <hr className="my-6" />
           <span className="text-gray-600">Ditulis oleh</span>
           <h3 className="text-2xl font-bold mb-2 text-gray-700">
@@ -101,7 +110,7 @@ const PostDetail = (props) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </Layout>
     </>
   )

@@ -5,14 +5,14 @@ import PostCard from '@components/PostCard'
 const Posts = (props) => {
   const { posts } = props
 
-  console.log(posts)
-
   return (
     <>
-      <Layout title="Posts" ogTitle="Posts" container>
-        <div className="pt-20 md:pt-24" style={{ backgroundColor: '#fefefe' }}>
-          <section className="text-center mb-10">
-            <h1 className="text-lg text-darkest-gray">Semua</h1>
+      <Layout title="Tulisan" ogTitle="Tulisan" container>
+        <div className="pt-20 md:pt-24">
+          <section className="mb-12">
+            <h1 className="text-lg text-darkest-gray font-semibold">
+              Semua Tulisan
+            </h1>
           </section>
 
           <section>
@@ -21,7 +21,8 @@ const Posts = (props) => {
                 <PostCard
                   title={data.title}
                   description={data.description}
-                  href="/posts/[slug]"
+                  date={data.createdAt}
+                  href={`/posts/${data.slug}`}
                   as={`/posts/${data.slug}`}
                 />
               </article>
