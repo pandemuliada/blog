@@ -1,6 +1,7 @@
 import { getAllPosts } from '../api'
 import Layout from '../../layouts'
 import PostCard from '../../components/PostCard'
+import Heading from '../../components/Heading'
 
 const Posts = (props) => {
   const { posts } = props
@@ -10,9 +11,7 @@ const Posts = (props) => {
       <Layout title="Tulisan" ogTitle="Tulisan" container>
         <div className="pt-20 md:pt-24">
           <section className="mb-12">
-            <h1 className="text-lg text-darkest-gray font-semibold">
-              Semua Tulisan
-            </h1>
+            <Heading className="text-lg font-semibold">Semua Tulisan</Heading>
           </section>
 
           <section>

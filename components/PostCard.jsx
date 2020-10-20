@@ -1,15 +1,13 @@
 import Link from 'next/link'
 import { formatDate } from '../utils'
-
-const styles = {
-  title: 'font-medium text-blue-gray mb-1',
-}
+import Heading from './Heading'
+import Text from './Text'
 
 const PostCard = ({ previewImage, title, description, href, date, as }) => {
   return (
     <>
       <Link href={href} as={as}>
-        <a className="block mb-8">
+        <a className="block mb-10">
           <div className="mb-5 rounded cursor-pointer">
             {previewImage && (
               <img
@@ -19,13 +17,17 @@ const PostCard = ({ previewImage, title, description, href, date, as }) => {
               />
             )}
             <div>
-              <span className="font-light text-gray" style={{ fontSize: 13 }}>
+              <Text as="span" className="font-light" style={{ fontSize: 13 }}>
                 {formatDate(date)}
-              </span>
-              <h3 className={styles.title} style={{ fontSize: '1.3rem' }}>
+              </Text>
+              <Heading
+                as="h3"
+                className="font-medium mb-1"
+                style={{ fontSize: '1.3rem' }}
+              >
                 {title}
-              </h3>
-              <p className="text-gray mb-2 italic">{description}</p>
+              </Heading>
+              <Text className="text-gray mb-2 italic">{description}</Text>
             </div>
           </div>
         </a>
