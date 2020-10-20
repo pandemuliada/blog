@@ -1,4 +1,4 @@
-import Layout from '@layouts/index'
+import Layout from '../layouts'
 
 const Home = ({ posts }) => {
   return (
@@ -6,7 +6,9 @@ const Home = ({ posts }) => {
       <Layout container>
         <section className="h-screen v-align">
           <div>
-            <h1 className="text-xl text-darkest-gray">Halo 👋, Saya Muliada</h1>
+            <h1 className="text-xl text-oxford-blue-gray">
+              Halo 👋, Saya Muliada
+            </h1>
             <span className="block mb-8 text-gray">@pandemuliada</span>
             <p className="mb-3">
               Biasa dipanggil Mul, tinggal di Bali, keseharian berkutat di depan

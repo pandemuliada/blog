@@ -9,12 +9,21 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
+      mono: ['Fira Code', 'consolas', 'monospace'],
     },
     colors: {
-      primary: '#132743',
       transparent: 'transparent',
       white: '#ffffff',
       black: '#000000',
+
+      'red-crayola': '#ED254E',
+      'oxford-blue': '#011936',
+      'black-corai': '#465362',
+      'alice-blue': '#EBF4FF',
+      'blue-jeans': '#05a7c7',
+      'pacific-blue': '#22AED1',
+      'electric-indigo': '#682AF7',
+      magnolia: '#FFFAFF',
 
       gray: '#4a5568',
       'darker-gray': '#2d3748',

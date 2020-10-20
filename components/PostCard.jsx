@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { formatDate } from '../utils'
 
 const styles = {
-  title: 'font-medium text-darkest-gray mb-1',
+  title: 'font-medium text-blue-gray mb-1',
 }
 
 const PostCard = ({ previewImage, title, description, href, date, as }) => {
@@ -10,7 +10,7 @@ const PostCard = ({ previewImage, title, description, href, date, as }) => {
     <>
       <Link href={href} as={as}>
         <a className="block mb-8">
-          <div className="bg-white mb-5 rounded cursor-pointer">
+          <div className="mb-5 rounded cursor-pointer">
             {previewImage && (
               <img
                 src={previewImage}

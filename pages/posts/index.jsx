@@ -1,6 +1,6 @@
 import { getAllPosts } from '../api'
-import Layout from '@layouts/index'
-import PostCard from '@components/PostCard'
+import Layout from '../../layouts'
+import PostCard from '../../components/PostCard'
 
 const Posts = (props) => {
   const { posts } = props

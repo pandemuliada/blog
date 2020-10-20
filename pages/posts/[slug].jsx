@@ -2,17 +2,17 @@ import ReactMarkdown from 'react-markdown'
 import author from '../../settings/author'
 import { readingTime, formatDate, removeChar } from '../../utils'
 import { getAllPosts, getPostBySlug } from '../api'
-import Layout from '@layouts/index'
+import Layout from '../../layouts'
 import {
   Heading,
   Link,
   Code,
   BlockCode,
   Paragraph,
-} from '@components/Markdown/index'
+} from '../../components/Markdown/index'
 
 const styles = {
-  title: 'text-xl md:text-5xl font-medium text-darkest-gray text-center',
+  title: 'text-xl md:text-5xl font-medium text-oxford-blue text-center',
 }
 
 const PostDetail = (props) => {
@@ -29,61 +29,69 @@ const PostDetail = (props) => {
         type="article"
         ogImage={data.heroImage}
       >
-        <section className="w-full mx-auto md:pt-16">
-          {data.heroImage && (
-            <div className="w-full">
-              <img src={data.heroImage} alt={data.title} className="w-full" />
+        <div className="md:py-16">
+          <section className="w-full mx-auto">
+            {data.heroImage && (
+              <div className="w-full">
+                <img src={data.heroImage} alt={data.title} className="w-full" />
+              </div>
+            )}
+            <div className="text-darker-gray italic mt-2 mb-8 text-center w-10/12 mx-auto md:w-full">
+              <span className="block text-gray mt-6">
+                {formatDate(data.createdAt)} • {readingTime(content)} menit
+              </span>
+              <h2 className={styles.title}>{data.title}</h2>
+              <div className="w-10/12 mx-auto md:container">
+                {data.categories?.map((category, index) => (
+                  <span key={`${category}_${index}`}>
+                    <Link
+                      href={`/category/${category}`}
+                      as={`/category/${category}`}
+                    >
+                      <a
+                        style={{ fontSize: 12 }}
+                        className="italic inline-block no-underline text-blue-jeans mr-3 cursor-pointer"
+                      >
+                        #{category}
+                      </a>
+                    </Link>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <article className="w-10/12 mx-auto md:container">
+            <ReactMarkdown
+              escapeHtml={false}
+              source={content}
+              parserOptions={{ commonmark: true }}
+              renderers={{
+                heading: Heading,
+                code: BlockCode,
+                inlineCode: Code,
+                link: Link,
+                paragraph: Paragraph,
+              }}
+            />
+          </article>
+
+          {data.thanksSection && (
+            <div className="mt-10 p-10" style={{ backgroundColor: '#fff' }}>
+              <p
+                className="font-medium text-blue-jeans"
+                style={{ fontSize: 22 }}
+              >
+                Terima kasih sudah membaca.
+              </p>
+              <p className="italic">
+                Jika kamu menikmati tulisan ini dan merasa tulisan ini
+                bermanfaat, feel free to share it.
+              </p>
             </div>
           )}
-          <div className="text-darker-gray italic mt-2 mb-8 text-center w-10/12 mx-auto md:w-full">
-            <h2 className={styles.title}>{data.title}</h2>
-            <span className="text-gray">
-              {formatDate(data.createdAt)} • {readingTime(content)} menit
-            </span>
-          </div>
-        </section>
 
-        <article className="w-10/12 mx-auto md:container">
-          <ReactMarkdown
-            escapeHtml={false}
-            source={content}
-            parserOptions={{ commonmark: true }}
-            renderers={{
-              heading: Heading,
-              code: BlockCode,
-              inlineCode: Code,
-              link: Link,
-              paragraph: Paragraph,
-            }}
-          />
-        </article>
-
-        <div className="mt-10 p-10" style={{ backgroundColor: '#f5f5f5' }}>
-          <p className="font-medium" style={{ fontSize: 18 }}>
-            Terima kasih sudah membaca.
-          </p>
-          <p className="italic">
-            Jika kamu menikmati tulisan ini dan merasa tulisan ini bermanfaat,
-            feel free to share it.
-          </p>
-        </div>
-
-        <div className="my-8 w-10/12 mx-auto md:container">
-          {data.categories?.map((category, index) => (
-            <span key={`${category}_${index}`}>
-              <Link href={`/category/${category}`} as={`/category/${category}`}>
-                <a
-                  style={{ backgroundColor: '#f5f5f5', fontSize: 14 }}
-                  className="inline-block no-underline text-gray px-3 py-2 mr-3 cursor-pointer capitalize"
-                >
-                  {removeChar(category, '-')}
-                </a>
-              </Link>
-            </span>
-          ))}
-        </div>
-
-        {/* <div className="mb-8 w-10/12 mx-auto md:container">
+          {/* <div className="mb-8 w-10/12 mx-auto md:container">
           <hr className="my-6" />
           <span className="text-gray-600">Ditulis oleh</span>
           <h3 className="text-2xl font-bold mb-2 text-gray-700">
@@ -111,6 +119,7 @@ const PostDetail = (props) => {
             ))}
           </div>
         </div> */}
+        </div>
       </Layout>
     </>
   )

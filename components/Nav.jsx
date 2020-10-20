@@ -2,7 +2,10 @@ import Link from 'next/link'
 
 export default () => {
   return (
-    <nav className="fixed bg-white py-5 pl-16 pr-5 w-48 h-screen">
+    <nav
+      className="fixed top-0 bottom-0 bg-white py-5 pl-10 pr-5 h-screen"
+      style={{ width: 200 }}
+    >
       <div className="flex items-center h-full">
         <div className="text-gray-700 flex flex-col">
           <Link href="/" as="/">
