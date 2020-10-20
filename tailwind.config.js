@@ -24,7 +24,15 @@ module.exports = {
       'pacific-blue': '#22AED1',
       'electric-indigo': '#682AF7',
       magnolia: '#FFFAFF',
+      xiketic: '#020112',
 
+      'raisin-black': '#19202e',
+      'eerie-black': '#1A1A1A',
+      'rich-black-fogra': '#131821',
+
+      cultured: '#F2F2F2',
+      'lightest-gray': '#a0aec0',
+      'lighter-gray': '#718096',
       gray: '#4a5568',
       'darker-gray': '#2d3748',
       'darkest-gray': '#1a202c',
@@ -48,7 +56,8 @@ module.exports = {
     },
     extend: {
       lineHeight: {
-        relaxed: 1.75,
+        relaxed: 1.85,
+        loose: 2,
       },
     },
   },

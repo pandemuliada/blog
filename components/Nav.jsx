@@ -1,27 +1,47 @@
 import Link from 'next/link'
+import styled from 'styled-components'
+import useTheme from '../hooks/useTheme'
 
-export default () => {
+const NavWrapper = styled.nav`
+  background: ${({ theme }) =>
+    theme.isDark ? theme.colors['rich-black-fogra'] : theme.colors['white']};
+  color: ${({ theme }) =>
+    theme.isDark
+      ? theme.colors['lighter-gray']
+      : theme.colors['rich-black-fogra']};
+
+  transition: all ease-out 0.3s;
+`
+
+const Nav = () => {
+  const { toggleTheme } = useTheme()
+
   return (
-    <nav
-      className="fixed top-0 bottom-0 bg-white py-5 pl-10 pr-5 h-screen"
-      style={{ width: 200 }}
+    <NavWrapper
+      className="fixed top-0 bottom-0 py-5 pl-10 pr-5 h-screen"
+      style={{ width: 250 }}
     >
       <div className="flex items-center h-full">
-        <div className="text-gray-700 flex flex-col">
+        <div className="flex flex-col">
+          <button onClick={() => toggleTheme()} style={{ marginBottom: 25 }}>
+            Change Theme
+          </button>
           <Link href="/" as="/">
-            <a className="text-gray">About</a>
+            <a>About</a>
           </Link>
           <Link href="/now" as="/now">
-            <a className="text-gray mt-3">Now</a>
+            <a className="mt-3">Now</a>
           </Link>
           <Link href="/posts" as="/posts">
-            <a className="text-gray mt-3">Blog</a>
+            <a className="mt-3">Blog</a>
           </Link>
           <Link href="/tag/[tag]" as="/tag/technical">
-            <a className="text-gray mt-3 ml-3">Technical</a>
+            <a className="mt-3 ml-3">Technical</a>
           </Link>
         </div>
       </div>
-    </nav>
+    </NavWrapper>
   )
 }
+
+export default Nav
