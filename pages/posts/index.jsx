@@ -9,14 +9,14 @@ const Posts = (props) => {
   return (
     <>
       <Layout title="Tulisan" ogTitle="Tulisan" container>
-        <div className="pt-20 md:pt-24">
+        <div className="pt-20 md:py-16">
           <section className="mb-12">
             <Heading className="text-lg font-semibold">Semua Tulisan</Heading>
           </section>
 
           <section>
             {posts.map(({ data }) => (
-              <article key={data.slug}>
+              <article key={data.slug} className="pb-10">
                 <PostCard
                   title={data.title}
                   description={data.description}

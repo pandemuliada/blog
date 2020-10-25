@@ -1,20 +1,24 @@
-export default (props) => {
+import Heading from '../Heading'
+
+const MarkdownHeading = (props) => {
   if (props.level == 1)
     return (
-      <h1 {...props} className="mt-6 mb-4 font-medium text-darker-gray text-xl">
+      <Heading as="h1" {...props} className="mt-6 mb-4 font-medium text-xl">
         {props.children}
-      </h1>
+      </Heading>
     )
   if (props.level == 2)
     return (
-      <h2 {...props} className="mt-6 mb-4 font-medium text-darker-gray text-lg">
+      <Heading as="h2" {...props} className="mt-6 mb-4 font-medium text-lg">
         {props.children}
-      </h2>
+      </Heading>
     )
   if (props.level == 3)
     return (
-      <h3 {...props} className="mt-6 mb-4 font-medium text-darker-gray text-md">
+      <Heading as="h3" {...props} className="mt-6 mb-2 font-medium text-md">
         {props.children}
-      </h3>
+      </Heading>
     )
 }
+
+export default MarkdownHeading

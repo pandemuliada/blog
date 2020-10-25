@@ -7,8 +7,8 @@ const PostCard = ({ previewImage, title, description, href, date, as }) => {
   return (
     <>
       <Link href={href} as={as}>
-        <a className="block mb-10">
-          <div className="mb-5 rounded cursor-pointer">
+        <a className="block">
+          <div className="cursor-pointer">
             {previewImage && (
               <img
                 src={previewImage}
@@ -27,7 +27,7 @@ const PostCard = ({ previewImage, title, description, href, date, as }) => {
               >
                 {title}
               </Heading>
-              <Text className="text-gray mb-2 italic">{description}</Text>
+              <Text className="mb-2 italic font-light">{description}</Text>
             </div>
           </div>
         </a>

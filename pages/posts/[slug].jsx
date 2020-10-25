@@ -1,18 +1,15 @@
-import ReactMarkdown from 'react-markdown'
+// import ReactMarkdown from 'react-markdown'
 import author from '../../settings/author'
 import { readingTime, formatDate, removeChar } from '../../utils'
 import { getAllPosts, getPostBySlug } from '../api'
 import Layout from '../../layouts'
-import {
-  Heading,
-  Link,
-  Code,
-  BlockCode,
-  Paragraph,
-} from '../../components/Markdown/index'
+import ReactMarkdown from '../../components/Markdown'
+import Heading from '../../components/Heading'
+import Text from '../../components/Text'
+import Link from 'next/link'
 
 const styles = {
-  title: 'text-xl md:text-5xl font-medium text-oxford-blue text-center',
+  title: 'text-xl md:text-5xl font-medium text-center',
 }
 
 const PostDetail = (props) => {
@@ -37,10 +34,10 @@ const PostDetail = (props) => {
               </div>
             )}
             <div className="text-darker-gray italic mt-2 mb-8 text-center w-10/12 mx-auto md:w-full">
-              <span className="block text-gray mt-6">
+              <Text as="span" className="block font-light mt-6">
                 {formatDate(data.createdAt)} • {readingTime(content)} menit
-              </span>
-              <h2 className={styles.title}>{data.title}</h2>
+              </Text>
+              <Heading className={styles.title}>{data.title}</Heading>
               <div className="w-10/12 mx-auto md:container">
                 {data.categories?.map((category, index) => (
                   <span key={`${category}_${index}`}>
@@ -62,18 +59,7 @@ const PostDetail = (props) => {
           </section>
 
           <article className="w-10/12 mx-auto md:container">
-            <ReactMarkdown
-              escapeHtml={false}
-              source={content}
-              parserOptions={{ commonmark: true }}
-              renderers={{
-                heading: Heading,
-                code: BlockCode,
-                inlineCode: Code,
-                link: Link,
-                paragraph: Paragraph,
-              }}
-            />
+            <ReactMarkdown source={content} />
           </article>
 
           {data.thanksSection && (

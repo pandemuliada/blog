@@ -12,11 +12,11 @@ ol {
 }
 
 li {
-  @apply mb-2 text-gray;
+  @apply mb-3;
 }
 
 p {
-  @apply text-gray leading-relaxed;
+  @apply leading-loose;
 }
 
 .v-align {

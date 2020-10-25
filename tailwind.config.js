@@ -16,21 +16,11 @@ module.exports = {
       white: '#ffffff',
       black: '#000000',
 
-      'red-crayola': '#ED254E',
-      'oxford-blue': '#011936',
-      'black-corai': '#465362',
-      'alice-blue': '#EBF4FF',
       'blue-jeans': '#05a7c7',
-      'pacific-blue': '#22AED1',
-      'electric-indigo': '#682AF7',
-      magnolia: '#FFFAFF',
-      xiketic: '#020112',
 
-      'raisin-black': '#19202e',
-      'eerie-black': '#1A1A1A',
       'rich-black-fogra': '#131821',
 
-      cultured: '#F2F2F2',
+      cultured: '#dfe6e9',
       'lightest-gray': '#a0aec0',
       'lighter-gray': '#718096',
       gray: '#4a5568',

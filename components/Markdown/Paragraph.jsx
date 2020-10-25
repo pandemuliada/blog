@@ -1,9 +1,11 @@
-const Paragraph = (props) => {
+import Text from '../Text'
+
+const MarkdownParagraph = (props) => {
   return (
-    <p {...props} className="text-gray mb-4">
+    <Text {...props} className="mb-4">
       {props.children}
-    </p>
+    </Text>
   )
 }
 
-export default Paragraph
+export default MarkdownParagraph

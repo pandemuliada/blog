@@ -18,12 +18,8 @@ const Layout = ({ children, container, ...rest }) => {
         {...rest}
       />
       <Nav />
-      <LayoutContainer>
-        <div
-          className={
-            container && 'container mx-auto px-6 md:px-0 md:w-750 min-h-screen'
-          }
-        >
+      <LayoutContainer className="h-screen overflow-y-auto">
+        <div className={container && 'container mx-auto md:w-750'}>
           {children}
         </div>
       </LayoutContainer>

@@ -2,13 +2,11 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import useTheme from '../hooks/useTheme'
 
-const NavWrapper = styled.nav`
+const NavWrapper = styled('nav')`
   background: ${({ theme }) =>
     theme.isDark ? theme.colors['rich-black-fogra'] : theme.colors['white']};
   color: ${({ theme }) =>
-    theme.isDark
-      ? theme.colors['lighter-gray']
-      : theme.colors['rich-black-fogra']};
+    theme.isDark ? theme.colors['lightest-gray'] : theme.colors['gray']};
 
   transition: all ease-out 0.3s;
 `
@@ -18,7 +16,7 @@ const Nav = () => {
 
   return (
     <NavWrapper
-      className="fixed top-0 bottom-0 py-5 pl-10 pr-5 h-screen"
+      className="hidden md:block fixed top-0 bottom-0 py-5 pl-10 pr-5 h-screen"
       style={{ width: 250 }}
     >
       <div className="flex items-center h-full">

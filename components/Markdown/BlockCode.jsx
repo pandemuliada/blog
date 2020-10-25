@@ -10,34 +10,28 @@ import {
 // Highlight Theme
 import {
   atelierSulphurpoolLight,
-  atelierSeasideLight,
-  atelierForestLight,
-  atelierEstuaryLight,
-  atomOneLight,
   atomOneDark,
-  atomOneDarkReasonable,
-  atelierCaveLight,
-  atelierDuneLight,
-  githubGist,
-  github,
-  paraisoLight,
-  vs,
 } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import useTheme from '../../hooks/useTheme'
 
-export default ({ language, value }) => {
+const BlockCode = ({ language, value }) => {
+  const { theme } = useTheme()
+
   return (
     <div className="mb-4">
       <SyntaxHighlighter
         customStyle={{ borderRadius: 0 }}
         codeTagProps={{
           className: 'font-mono',
-          style: { fontSize: 14 },
+          style: { fontSize: 15 },
         }}
         language={language}
-        style={atelierSulphurpoolLight}
+        style={theme === 'light' ? atelierSulphurpoolLight : atomOneDark}
       >
         {value}
       </SyntaxHighlighter>
     </div>
   )
 }
+
+export default BlockCode

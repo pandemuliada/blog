@@ -1,5 +1,20 @@
-export default (props) => (
-  <code className="bg-oxford-blue bg-opacity-25 px-1 text-gray">
+import styled from 'styled-components'
+
+const StyledCode = styled.code`
+  background: ${({ theme }) =>
+    theme.isDark ? theme.colors['lightest-gray'] : theme.colors['gray']};
+  color: ${({ theme }) =>
+    theme.isDark ? theme.colors['darkest-gray'] : theme.colors['white']};
+  font-size: 15px;
+`
+
+const Code = (props) => (
+  <StyledCode
+    className="bg-opacity-25"
+    style={{ paddingLeft: 3, paddingRight: 3 }}
+  >
     {props.children}
-  </code>
+  </StyledCode>
 )
+
+export default Code

@@ -31,13 +31,7 @@ const ThemeProvider = (props) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setThemeMode, toggleTheme }}>
-      <StyledThemeProvider
-        theme={
-          theme === 'light'
-            ? { ...lightTheme, isDark: false }
-            : { ...darkTheme, isDark: true }
-        }
-      >
+      <StyledThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <GlobalStyles />
         {props.children}
       </StyledThemeProvider>
