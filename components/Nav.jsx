@@ -29,15 +29,15 @@ const Nav = () => {
           <Link href="/" as="/">
             <a>About</a>
           </Link>
-          <Link href="/now" as="/now">
+          {/* <Link href="/now" as="/now">
             <a className="mt-3">Now</a>
-          </Link>
+          </Link> */}
           <Link href="/posts" as="/posts">
             <a className="mt-3">Blog</a>
           </Link>
-          <Link href="/tag/[tag]" as="/tag/technical">
+          {/* <Link href="/tag/[tag]" as="/tag/technical">
             <a className="mt-3 ml-3">Technical</a>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </NavWrapper>
