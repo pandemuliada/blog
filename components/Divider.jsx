@@ -13,7 +13,9 @@ const Divider = styled('hr')`
   &::after {
     content: '•   •   •';
     color: ${({ theme }) =>
-      theme.isDark ? theme.colors['lighter-gray'] : theme.colors['gray']};
+      theme.isDark
+        ? theme.colors['lighter-gray']
+        : theme.colors['lighter-gray']};
     font-size: 30px;
   }
 `

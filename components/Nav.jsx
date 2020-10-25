@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import useTheme from '../hooks/useTheme'
+import { Sun } from '../icons/sun'
+import { Moon } from '../icons/moon'
 
 const NavWrapper = styled('nav')`
   background: ${({ theme }) =>
@@ -12,7 +14,7 @@ const NavWrapper = styled('nav')`
 `
 
 const Nav = () => {
-  const { toggleTheme } = useTheme()
+  const { toggleTheme, theme } = useTheme()
 
   return (
     <NavWrapper
@@ -21,8 +23,8 @@ const Nav = () => {
     >
       <div className="flex items-center h-full">
         <div className="flex flex-col">
-          <button onClick={() => toggleTheme()} style={{ marginBottom: 25 }}>
-            Change Theme
+          <button onClick={() => toggleTheme()} style={{ marginBottom: 20 }}>
+            {theme === 'light' ? <Sun /> : <Moon />}
           </button>
           <Link href="/" as="/">
             <a>About</a>
