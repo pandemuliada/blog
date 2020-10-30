@@ -1,15 +1,14 @@
 import Link from 'next/link'
+import { formatDate } from '../utils'
+import Heading from './Heading'
+import Text from './Text'
 
-const styles = {
-  title: 'text-xl font-medium text-gray-700 mb-1',
-}
-
-export default ({ previewImage, title, description, href, as }) => {
+const PostCard = ({ previewImage, title, description, href, date, as }) => {
   return (
     <>
       <Link href={href} as={as}>
-        <a>
-          <div className="bg-white mb-5 rounded cursor-pointer border border-gray-300 hover:shadow">
+        <a className="block">
+          <div className="cursor-pointer">
             {previewImage && (
               <img
                 src={previewImage}
@@ -17,9 +16,18 @@ export default ({ previewImage, title, description, href, as }) => {
                 className="block w-full h-40 object-cover rounded-tr rounded-tl"
               />
             )}
-            <div className="px-4 pb-2 pt-3">
-              <h3 className={styles.title}>{title}</h3>
-              <p className="text-gray-600 mb-2">{description}</p>
+            <div>
+              <Text as="span" className="font-light" style={{ fontSize: 13 }}>
+                {formatDate(date)}
+              </Text>
+              <Heading
+                as="h3"
+                className="font-medium mb-1"
+                style={{ fontSize: '1.3rem' }}
+              >
+                {title}
+              </Heading>
+              <Text className="mb-2 italic font-light">{description}</Text>
             </div>
           </div>
         </a>
@@ -27,3 +35,5 @@ export default ({ previewImage, title, description, href, as }) => {
     </>
   )
 }
+
+export default PostCard

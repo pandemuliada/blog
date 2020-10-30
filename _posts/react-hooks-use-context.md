@@ -4,7 +4,9 @@ description: 'Berkenalan dengan React Hook : useContext'
 slug: 'react-hooks-use-context'
 createdAt: '2020-03-17'
 heroImage: '/static/posts/use-context.png'
-categories: ['react', 'front end']
+categories: ['react', 'front-end']
+tag: technical
+thanksSection: true
 ---
 
 Halo semua, gimana kabar kalian ? semoga baik-baik saja ya. Tetap jaga kesehatan ya, dan stay at home untuk sementara. Kali ini kita akan melanjutkan mempelajari tentang react hook yaitu **useContext**.

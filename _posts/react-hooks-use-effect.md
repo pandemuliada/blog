@@ -4,7 +4,7 @@ description: 'Berkenalan dengan React Hook : useEffect'
 slug: 'react-hooks-use-effect'
 createdAt: '2020-02-23'
 heroImage: '/static/posts/use-effect.png'
-categories: ['react', 'front end']
+categories: ['react', 'front-end']
 ---
 
 Halo semua, gimana kabar kalian di hari minggu ini ? semoga baik-baik saja ya. Kali ini kita akan melanjutkan mempelajari tentang react hook yaitu **useEffect**. Pada artikel sebelumnya kita sudah mempelajari yang namanya **useState**, yang belum membaca tulisan sebelumnya bisa dibaca dulu ya [disini](/posts/react-hooks-use-state).

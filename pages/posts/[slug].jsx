@@ -1,20 +1,18 @@
-import dynamic from 'next/dynamic'
-import matter from 'gray-matter'
-import { readingTime, formatDate } from '../../utils'
+// import ReactMarkdown from 'react-markdown'
 import author from '../../settings/author'
-
-const Layout = dynamic(() => import('../../components/Layout'))
-const ReactMarkdown = dynamic(() => import('react-markdown'))
-const Heading = dynamic(() => import('../../components/Markdown/Heading'))
-const Link = dynamic(() => import('../../components/Markdown/Link'))
-const InlineCode = dynamic(() => import('../../components/Markdown/InlineCode'))
-const BlockCode = dynamic(() => import('../../components/Markdown/BlockCode'))
+import { readingTime, formatDate, removeChar } from '../../utils'
+import { getAllPosts, getPostBySlug } from '../api'
+import Layout from '../../layouts'
+import ReactMarkdown from '../../components/Markdown'
+import Heading from '../../components/Heading'
+import Text from '../../components/Text'
+import Link from 'next/link'
 
 const styles = {
-  title: 'text-4xl md:text-5xl font-medium text-gray-800 text-center',
+  title: 'text-xl md:text-5xl font-medium text-center',
 }
 
-const PostDetail = props => {
+const PostDetail = (props) => {
   const { content, data } = props
 
   return (
@@ -27,46 +25,62 @@ const PostDetail = props => {
         type="article"
         ogImage={data.heroImage}
       >
-        <section className="w-full md:w-900 mx-auto">
-          <div className="text-gray-600 italic mb-1 mb-8 text-center w-10/12 mx-auto md:w-full">
-            <span>
-              {formatDate(data.createdAt)} • {readingTime(content)} menit
-            </span>
-            <h2 className={styles.title}>{data.title}</h2>
-          </div>
-          {data.heroImage && (
-            <div className="w-full mb-12">
-              <img src={data.heroImage} alt={data.title} className="w-full" />
+        <div className="mx-auto md:w-750">
+          <section className="w-full mx-auto pt-5">
+            <div className="text-darker-gray italic mb-8 text-center w-10/12 mx-auto md:w-full">
+              <Text as="span" className="block font-light">
+                {formatDate(data.createdAt)} • {readingTime(content)} menit
+              </Text>
+              <Heading className={styles.title}>{data.title}</Heading>
+              <div className="w-10/12 mx-auto md:container">
+                {data.categories?.map((category, index) => (
+                  <span key={`${category}_${index}`}>
+                    <Link
+                      href={`/category/${category}`}
+                      as={`/category/${category}`}
+                    >
+                      <a
+                        style={{ fontSize: 12 }}
+                        className="italic inline-block no-underline text-blue-jeans mr-3 cursor-pointer"
+                      >
+                        #{category}
+                      </a>
+                    </Link>
+                  </span>
+                ))}
+              </div>
+              {data.heroImage && (
+                <div className="w-full mt-4">
+                  <img
+                    src={data.heroImage}
+                    alt={data.title}
+                    className="w-full"
+                  />
+                </div>
+              )}
+            </div>
+          </section>
+
+          <article className="w-10/12 mx-auto md:w-750">
+            <ReactMarkdown source={content} />
+          </article>
+
+          {data.thanksSection && (
+            <div className="mt-10 p-10" style={{ backgroundColor: '#fff' }}>
+              <p
+                className="font-medium text-blue-jeans"
+                style={{ fontSize: 22 }}
+              >
+                Terima kasih sudah membaca.
+              </p>
+              <p className="italic">
+                Jika kamu menikmati tulisan ini dan merasa tulisan ini
+                bermanfaat, feel free to share it.
+              </p>
             </div>
           )}
-        </section>
 
-        <article className="w-10/12 mx-auto md:container">
-          <ReactMarkdown
-            escapeHtml={false}
-            source={content}
-            parserOptions={{ commonmark: true }}
-            renderers={{
-              heading: Heading,
-              code: BlockCode,
-              inlineCode: InlineCode,
-              link: Link,
-            }}
-          />
-        </article>
-
-        <div className="mt-12 w-10/12 mx-auto md:container">
-          {data.categories?.map((category, index) => (
-            <span
-              key={index}
-              className="bg-gray-200 text-gray-700 py-2 px-3 mr-3 inline-block text-sm capitalize"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
-
-        <div className="mb-8 w-10/12 mx-auto md:container">
+          {/* <div className="mb-8 w-10/12 mx-auto md:container">
           <hr className="my-6" />
           <span className="text-gray-600">Ditulis oleh</span>
           <h3 className="text-2xl font-bold mb-2 text-gray-700">
@@ -93,20 +107,30 @@ const PostDetail = props => {
               </div>
             ))}
           </div>
+        </div> */}
         </div>
       </Layout>
     </>
   )
 }
 
-PostDetail.getInitialProps = async context => {
-  const { slug } = context.query
+export async function getStaticProps(context) {
+  const post = await getPostBySlug(context.params.slug)
+  const data = post.data
+  const content = post.content
+  return {
+    props: { data, content },
+  }
+}
 
-  const content = await import(`../../posts/${slug}.md`)
-  const data = matter(content.default)
+export async function getStaticPaths() {
+  let posts = await getAllPosts()
+
+  const paths = posts.map((post) => `/posts/${post.data.slug}`)
 
   return {
-    ...data, // it returns { content: "string", data: { title, date, ... } }
+    paths,
+    fallback: false,
   }
 }
 

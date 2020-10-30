@@ -1,47 +1,45 @@
-import dynamic from 'next/dynamic'
-import matter from 'gray-matter'
-import { importAll } from '../../utils'
+import { getAllPosts } from '../api'
+import Layout from '../../layouts'
+import PostCard from '../../components/PostCard'
+import Heading from '../../components/Heading'
 
-const Layout = dynamic(() => import('../../components/Layout'))
-const PostCard = dynamic(() => import('../../components/PostCard'))
-
-const Posts = props => {
+const Posts = (props) => {
   const { posts } = props
 
   return (
     <>
-      <Layout title="Posts" ogTitle="Posts" useContainer>
-        <section className="text-center mb-6">
-          <h1 className="text-4xl font-medium text-gray-800">
-            Semua Postingan
-          </h1>
-        </section>
+      <Layout title="Tulisan" ogTitle="Tulisan" container>
+        <div className="pt-20 md:py-16">
+          <section className="mb-12">
+            <Heading className="text-lg font-semibold">Semua Tulisan</Heading>
+          </section>
 
-        <section>
-          {posts.map(({ data }) => (
-            <article key={data.slug}>
-              <PostCard
-                previewImage={data.heroImage}
-                title={data.title}
-                description={data.description}
-                href="/posts/[slug]"
-                as={`/posts/${data.slug}`}
-              />
-            </article>
-          ))}
-        </section>
+          <section>
+            {posts.map(({ data }) => (
+              <article key={data.slug} className="pb-10">
+                <PostCard
+                  title={data.title}
+                  description={data.description}
+                  date={data.createdAt}
+                  href={`/posts/${data.slug}`}
+                  as={`/posts/${data.slug}`}
+                />
+              </article>
+            ))}
+          </section>
+        </div>
       </Layout>
     </>
   )
 }
 
-Posts.getInitialProps = async () => {
-  const files = importAll(require.context('../../posts', true, /\.md$/))
-
-  const posts = files.map(file => matter(file.default))
+export async function getStaticProps() {
+  const posts = await getAllPosts()
 
   return {
-    posts,
+    props: {
+      posts: posts,
+    },
   }
 }
 

@@ -1,0 +1,32 @@
+ul,
+li {
+  @apply mb-5;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+li {
+  @apply mb-3;
+}
+
+p {
+  @apply leading-loose;
+}
+
+.v-align {
+  @apply flex items-center;
+}
+
+@layer utilities {
+  @responsive {
+    .w-750 {
+      width: 750px;
+    }
+  }
+}
