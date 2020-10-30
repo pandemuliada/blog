@@ -18,8 +18,8 @@ const Layout = ({ children, container, ...rest }) => {
         {...rest}
       />
       <Nav />
-      <LayoutContainer className="h-screen overflow-y-auto">
-        <div className={container && 'container mx-auto md:w-750'}>
+      <LayoutContainer className="min-h-screen py-6 md:py-16">
+        <div className={container && 'w-10/12 mx-auto md:w-750'}>
           {children}
         </div>
       </LayoutContainer>

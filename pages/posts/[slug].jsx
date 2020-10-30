@@ -18,7 +18,6 @@ const PostDetail = (props) => {
   return (
     <>
       <Layout
-        container
         title={data.title}
         ogTitle={data.title}
         description={data.description}
@@ -26,15 +25,10 @@ const PostDetail = (props) => {
         type="article"
         ogImage={data.heroImage}
       >
-        <div className="md:py-16">
-          <section className="w-full mx-auto">
-            {data.heroImage && (
-              <div className="w-full">
-                <img src={data.heroImage} alt={data.title} className="w-full" />
-              </div>
-            )}
-            <div className="text-darker-gray italic mt-2 mb-8 text-center w-10/12 mx-auto md:w-full">
-              <Text as="span" className="block font-light mt-6">
+        <div className="mx-auto md:w-750">
+          <section className="w-full mx-auto pt-5">
+            <div className="text-darker-gray italic mb-8 text-center w-10/12 mx-auto md:w-full">
+              <Text as="span" className="block font-light">
                 {formatDate(data.createdAt)} • {readingTime(content)} menit
               </Text>
               <Heading className={styles.title}>{data.title}</Heading>
@@ -55,10 +49,19 @@ const PostDetail = (props) => {
                   </span>
                 ))}
               </div>
+              {data.heroImage && (
+                <div className="w-full mt-4">
+                  <img
+                    src={data.heroImage}
+                    alt={data.title}
+                    className="w-full"
+                  />
+                </div>
+              )}
             </div>
           </section>
 
-          <article className="w-10/12 mx-auto md:container">
+          <article className="w-10/12 mx-auto md:w-750">
             <ReactMarkdown source={content} />
           </article>
 
