@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "cross-env NODE_ENV=production && next build",
     "export": "next export",
-    "deploy": "yarn build && yarn export",
+    "deploy": "npm run build && npm run export",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build"
   },
